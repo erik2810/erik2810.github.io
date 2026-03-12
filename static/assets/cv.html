@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Erik Löffelholz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 9.5pt;
+            line-height: 1.5;
+            color: #1a1a2e;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 12mm 16mm;
+        }
+
+        a { color: #1e3a5f; text-decoration: none; }
+
+        /* Header */
+        .cv-head { margin-bottom: 6mm; border-bottom: 1.5px solid #1a1a2e; padding-bottom: 4mm; }
+        .cv-head h1 { font-size: 18pt; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2mm; }
+        .cv-head-contact { display: flex; flex-wrap: wrap; gap: 3mm 6mm; font-size: 8.5pt; color: #555; }
+
+        /* Sections */
+        .cv-sec { margin-bottom: 5mm; }
+        .cv-sec h2 {
+            font-size: 9pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #1e3a5f;
+            border-bottom: 0.5px solid #ccc;
+            padding-bottom: 1mm;
+            margin-bottom: 3mm;
+        }
+        .cv-sec p { margin-bottom: 2mm; }
+
+        /* Entries */
+        .cv-ent { display: flex; gap: 4mm; margin-bottom: 3mm; }
+        .cv-ent-date {
+            width: 32mm;
+            min-width: 32mm;
+            font-size: 8.5pt;
+            color: #555;
+            padding-top: 0.3mm;
+        }
+        .cv-ent-body { flex: 1; }
+        .cv-ent-title { font-weight: 600; }
+        .cv-ent-inst { font-size: 9pt; color: #555; }
+        .cv-ent-detail { font-size: 8.5pt; color: #666; margin-top: 0.5mm; }
+        .cv-ent-body ul { margin: 1mm 0 0 4mm; padding: 0; }
+        .cv-ent-body li { margin-bottom: 0.5mm; font-size: 9pt; }
+
+        /* Table */
+        .cv-tbl { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 2mm; }
+        .cv-tbl th {
+            text-align: left;
+            font-weight: 600;
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #666;
+            border-bottom: 1px solid #ccc;
+            padding: 1mm 2mm;
+        }
+        .cv-tbl td { padding: 1.2mm 2mm; border-bottom: 0.5px solid #eee; }
+        .cv-tbl th:nth-child(2), .cv-tbl td:nth-child(2),
+        .cv-tbl th:nth-child(3), .cv-tbl td:nth-child(3) { text-align: center; width: 14mm; }
+        .cv-note { font-size: 8pt; color: #888; }
+
+        /* Skills grid */
+        .cv-sk { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 6mm; margin-bottom: 2mm; }
+        .cv-sk h3 { font-size: 8.5pt; font-weight: 600; color: #333; margin-bottom: 0.5mm; }
+        .cv-sk p { font-size: 9pt; color: #555; margin-bottom: 0; }
+
+        /* Projects */
+        .cv-proj { margin-bottom: 1.5mm; }
+        .cv-proj strong { font-weight: 600; }
+        .cv-proj a { font-size: 8.5pt; color: #1e3a5f; }
+
+        /* Print button */
+        .print-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: #1a1a2e;
+            color: #fff;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            z-index: 999;
+        }
+        .print-bar a { color: rgba(255,255,255,0.7); }
+        .print-bar button {
+            background: #fff;
+            color: #1a1a2e;
+            border: none;
+            padding: 6px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .print-bar button:hover { background: #eee; }
+
+        @media print {
+            .print-bar { display: none; }
+            body { padding: 0; margin: 0; }
+            @page { margin: 14mm 16mm; size: A4; }
+        }
+
+        @media screen {
+            body { padding-top: 52px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="print-bar">
+    <span><a href="/">&larr; Back to site</a></span>
+    <button onclick="window.print()">Save as PDF</button>
+</div>
+
+<header class="cv-head">
+    <h1>Erik Löffelholz</h1>
+    <div class="cv-head-contact">
+        <span>Leipzig, Germany</span>
+        <span><a href="mailto:eriklfholz@googlemail.com">eriklfholz@googlemail.com</a></span>
+        <span><a href="https://github.com/erik2810">github.com/erik2810</a></span>
+        <span><a href="https://erik2810.github.io">erik2810.github.io</a></span>
+    </div>
+</header>
+
+<div class="cv-sec">
+    <h2>Personal Profile & Research Interests</h2>
+    <p>
+        Master's graduate in Mathematical Physics with a strong foundation in continuous-discrete
+        interactions and differential geometry. Currently specializing in Graph Machine Learning and
+        physics-inspired generative modeling. Passionate about understanding how complex structure
+        emerges from local constraints by integrating variational principles, energy-based modeling,
+        and structural priors. Applied experience spans joint discrete-continuous diffusion models,
+        differentiable physics simulation, rigorous metric evaluation, and from-scratch gradient-based
+        optimization.
+    </p>
+</div>
+
+<div class="cv-sec">
+    <h2>Education</h2>
+
+    <div class="cv-ent">
+        <div class="cv-ent-date">Oct 2021 – Sep 2025</div>
+        <div class="cv-ent-body">
+            <div class="cv-ent-title">M.Sc. Mathematical Physics</div>
+            <div class="cv-ent-inst">Universität Leipzig — Faculty of Physics and Earth System Sciences</div>
+            <div class="cv-ent-detail">Selected Coursework: Advanced PDE and Analysis · Differential Geometry · Quantum Field Theory · General Relativity · Group Theory</div>
+        </div>
+    </div>
+
+    <div class="cv-ent">
+        <div class="cv-ent-date">Oct 2018 – Mar 2022</div>
+        <div class="cv-ent-body">
+            <div class="cv-ent-title">B.Sc. Physics</div>
+            <div class="cv-ent-inst">Universität Leipzig — Faculty of Physics and Earth System Sciences</div>
+        </div>
+    </div>
+
+    <div class="cv-ent">
+        <div class="cv-ent-date">Aug 2010 – Jun 2018</div>
+        <div class="cv-ent-body">
+            <div class="cv-ent-title">Abitur</div>
+            <div class="cv-ent-inst">Luther-Melanchthon-Gymnasium, Lutherstadt Wittenberg</div>
+        </div>
+    </div>
+</div>
+
+<div class="cv-sec">
+    <h2>Research Experience</h2>
+
+    <div class="cv-ent">
+        <div class="cv-ent-date">Apr 2025 – Present</div>
+        <div class="cv-ent-body">
+            <div class="cv-ent-title">Scientific Assistant — Mathematics Lab</div>
+            <div class="cv-ent-inst">Max Planck Institute for Mathematics in the Sciences, Leipzig, Germany</div>
+            <ul>
+                <li>Developed differentiable simulation software and 3D visualization tools</li>
+                <li>Implemented mathematical models in Python and PyTorch</li>
+                <li>Transitioned from theoretical physics modeling to computational research</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cv-ent">
+        <div class="cv-ent-date">2025 – Present</div>
+        <div class="cv-ent-body">
+            <div class="cv-ent-title">Independent Researcher & Developer</div>
+            <div class="cv-ent-inst">Graph ML, Computational Geometry & Differentiable Physics</div>
+            <!--<ul>
+                <li><strong>Graph ML & Generative Modeling:</strong> Developed a from-scratch PyTorch Graph ML framework that focuses on spatial graph generation for 3D tree morphologies. Implemented joint discrete-continuous diffusion models, autoregressive spatial tree VAEs, and custom GCN/GAT layers using raw tensor operations.</li>
+                <li><strong>Differentiable Simulation & Physics:</strong> Built a fully differentiable mesh-based physics simulator that uses energy-based formulations and end-to-end backpropagation to map mesh topology to continuous dynamic graphs. Developed DiffQFT for holographic computations in AdS<sub>2</sub> using Neural Surrogates and Physics-Informed Neural Networks (PINNs).</li>
+                <li><strong>Computational Geometry & Math:</strong> Created a geometry engine ("Knitted Models") using half-edge data structures and spline interpolation for topological strand pattern generation. Built interactive numerical solvers for Neural ODEs (with RK4 integrators), Ricci flow PDEs, and Monte Carlo integration pipelines.</li>
+            </ul>-->
+        </div>
+    </div>
+</div>
+
+<div class="cv-sec" style="margin-bottom: 100px;">
+    <h2>Teaching & Academic Service</h2>
+
+    <div class="cv-ent">
+        <div class="cv-ent-date">Apr 2025 – Present</div>
+        <div class="cv-ent-body">
+            <div class="cv-ent-title">Mathematics Lab Assistant (Wissenschaftliche Hilfskraft)</div>
+            <div class="cv-ent-inst">Max Planck Institute for Mathematics in the Sciences, Leipzig, Germany</div>
+            <ul>
+                <li>Supported the Mathematics Lab, facilitating practical mathematical applications and assisting in the execution of technical modeling tasks.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cv-ent">
+        <div class="cv-ent-date">Mar 2024 – Feb 2025</div>
+        <div class="cv-ent-body">
+            <div class="cv-ent-title">Working Student — Mathematics Editorial</div>
+            <div class="cv-ent-inst">Ernst Klett Verlag GmbH, Leipzig</div>
+            <ul>
+                <li>Conducted technical and editorial reviews of mathematical content, ensuring structural clarity and pedagogical accuracy for educational publications.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--<div class="cv-sec">
+    <h2>Selected Coursework</h2>
+    <table class="cv-tbl">
+        <thead><tr><th>Course</th><th>Grade</th><th>ECTS</th></tr></thead>
+        <tbody>
+            <tr><td>Advanced Analysis — PDE</td><td><strong>1.0</strong></td><td>10</td></tr>
+            <tr><td>General Relativity</td><td><strong>1.0</strong></td><td>10</td></tr>
+            <tr><td>Relativistic Quantum Field Theory</td><td><strong>1.3</strong></td><td>10</td></tr>
+            <tr><td>Mathematical Physics II</td><td>1.7</td><td>10</td></tr>
+            <tr><td>Quantum Field Theory and Gravity</td><td>1.7</td><td>5</td></tr>
+            <tr><td>Quantum Field Theory on Curved Spacetimes</td><td>2.0</td><td>10</td></tr>
+        </tbody>
+    </table>
+    <p class="cv-note">German grading scale: 1.0 (excellent) – 4.0 (sufficient). Grades 1.0–1.5 = very good.</p>
+</div>-->
+
+<div class="cv-sec">
+    <h2>Publications & Conferences</h2>
+    <div class="cv-ent">
+        <p style="margin-top: 0;">
+            Fabian Lander, <strong>Erik Löffelholz</strong>, Diaaeldin Taha, Steve Trettel, Anna Wienhard.<br>
+            <em>"Illustrating Hyperbolic Surfaces with Mesh Embeddings."</em><br>
+            Submitted to the <strong>Bridges Conference 2026</strong> (Regular Papers Track). <em>Under Review</em>.
+        </p>
+    </div>
+</div>
+
+<div class="cv-sec">
+    <h2>Relevant Skills & Languages</h2>
+    <div class="cv-sk">
+        <div>
+            <h3>Programming</h3>
+            <p>Python &middot; JavaScript &middot; TypeScript &middot; C++</p>
+        </div>
+        <div>
+            <h3>Machine Learning</h3>
+            <p>PyTorch (Autograd, PINNs, GNNs) &middot; Diffusion Models &middot; VAEs &middot; Neural ODEs</p>
+        </div>
+        <div>
+            <h3>Scientific Computing</h3>
+            <p>Numerical Integration (Runge-Kutta, Monte Carlo) &middot; NumPy &middot; SciPy</p>
+        </div>
+        <div>
+            <h3>Mathematical Methods</h3>
+            <p>Functional analysis &middot; PDE theory &middot; variational methods &middot; differential geometry &middot; group theory &middot; Monte Carlo integration</p>
+        </div>
+        <div>
+            <h3>Tools</h3>
+            <p>Git &middot; Docker &middot; FastAPI &middot; LaTeX</p>
+        </div>
+        <div>
+            <h3>Languages</h3>
+            <p>German (native) &middot; English (C1 — full professional proficiency)</p>
+        </div>
+    </div>
+</div>
+
+<div class="cv-sec">
+    <h2>Referees</h2>
+    <div class="cv-ent">
+        <p style="margin-top: 0;">
+            <strong>Dr. Diaaeldin Taha</strong><br>
+            Research Group Leader (Mathematical Structures in AI)<br>
+            Max Planck Institute for Mathematics in the Sciences, Leipzig<br>
+            <a href="mailto:taha@mis.mpg.de">taha@mis.mpg.de</a>
+        </p>
+    </div>
+</div>
+
+<div class="cv-sec">
+    <h2>Selected Projects</h2>
+    <p class="cv-proj"><strong>Graph ML Lab</strong> — From-scratch implementations of GCN, GAT, graph VAE, discrete diffusion, and joint discrete-continuous diffusion over graph structure and 3D positions. PyTorch only, no external GNN libraries. <a href="https://github.com/erik2810/ml-projects">github.com/erik2810/ml-projects</a></p>
+    <p class="cv-proj"><strong>DiffQFT</strong> — Differentiable quantum field theory computations in Euclidean AdS<sub>2</sub>. Witten diagram integration, neural surrogates, PINN solver for the Klein-Gordon equation. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
+    <p class="cv-proj"><strong>Differentiable Physics Engine</strong> — Neural ODE learning chaotic Lorenz dynamics from scratch in the browser. From-scratch backpropagation and Adam optimizer in JavaScript. <a href="https://github.com/erik2810/differentiable-physics-engine">github.com/erik2810/differentiable-physics-engine</a></p>
+    <p class="cv-note">Full project portfolio with live demos at <a href="https://erik2810.github.io/projects/">erik2810.github.io/projects</a></p>
+</div>
+
+</body>
+</html>

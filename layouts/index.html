@@ -1,0 +1,102 @@
+{{ define "main" }}
+
+<section class="hero">
+    <div class="container">
+        <p class="hero-label">M.Sc. Mathematical Physics</p>
+        <h1 class="hero-name">Erik Löffelholz</h1>
+        <div class="hero-trajectory">
+            <span class="trajectory-node">Mathematical Physics</span>
+            <span class="trajectory-arrow"></span>
+            <span class="trajectory-node">Differentiable Simulation</span>
+            <span class="trajectory-arrow"></span>
+            <span class="trajectory-node active">Geometric Graph Machine Learning</span>
+        </div>
+        <p class="hero-description">
+            My research develops at the interface of mathematical physics and geometric machine learning.
+            Starting from a foundation in variational principles, symmetry, and field theory, I build
+            differentiable computational frameworks that model how structured geometry emerges from
+            local interactions &mdash; energy-based modeling of geometric graphs where discrete topology
+            and continuous 3D geometry are inseparably coupled.
+        </p>
+        <div class="hero-links">
+            <a href="/research/" class="btn-primary">Research</a>
+            <a href="/projects/" class="btn-secondary">Projects</a>
+            <a href="/cv/" class="btn-secondary">CV</a>
+        </div>
+    </div>
+</section>
+
+<section class="home-sections">
+    <div class="container">
+        <div class="section-grid">
+
+            <div class="section-card">
+                <div class="card-accent"></div>
+                <h2>Research Vision</h2>
+                <p>
+                    I study how complex geometric structure emerges from simple local constraints.
+                    My approach integrates variational principles and energy-based formulations from
+                    mathematical physics with modern graph neural network architectures, aiming to learn
+                    generative models for structured systems &mdash; branching morphologies, meshes, and
+                    embedded graphs in 3D space.
+                </p>
+                <a href="/research/" class="card-link">Read more &rarr;</a>
+            </div>
+
+            <div class="section-card">
+                <div class="card-accent"></div>
+                <h2>Differentiable Physics</h2>
+                <p>
+                    I develop mesh-based differentiable physics simulators entirely in PyTorch, where
+                    mesh topology initializes particle&ndash;spring systems and physical forces arise from
+                    energy-based formulations. These systems are fully differentiable, enabling
+                    gradient-based optimization through complex physical dynamics.
+                </p>
+                <a href="/projects/#simulation" class="card-link">View project &rarr;</a>
+            </div>
+
+            <div class="section-card">
+                <div class="card-accent"></div>
+                <h2>Graph Machine Learning</h2>
+                <p>
+                    Graphs embedded in 3D space are neither purely geometric nor purely combinatorial.
+                    My research direction focuses on generative models for such
+                    hybrid structures, combining topological reasoning, geometric invariance, and
+                    structural priors within discrete&ndash;continuous learning frameworks.
+                </p>
+                <a href="/research/#hybrid-systems" class="card-link">Learn more &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="home-directions">
+    <div class="container">
+        <h2>Research Directions</h2>
+        <div class="directions-grid">
+            <div class="direction-item">
+                <span class="direction-marker"></span>
+                <h3>Energy-Based Graph Modeling</h3>
+                <p>Learning energy functionals over graph structures and 3D embeddings.</p>
+            </div>
+            <div class="direction-item">
+                <span class="direction-marker"></span>
+                <h3>Differentiable Growth Processes</h3>
+                <p>Modeling generative branching and growth via differentiable local rules.</p>
+            </div>
+            <div class="direction-item">
+                <span class="direction-marker"></span>
+                <h3>Geometric Graph Metrics</h3>
+                <p>Rigorous comparison of structured geometric objects in embedding spaces.</p>
+            </div>
+            <div class="direction-item">
+                <span class="direction-marker"></span>
+                <h3>Equivariant Structured Systems</h3>
+                <p>Integrating symmetry constraints into hybrid discrete&ndash;continuous architectures.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ end }}

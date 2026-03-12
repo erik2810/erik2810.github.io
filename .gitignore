@@ -1,0 +1,19 @@
+# Hugo
+public/
+.hugo_build.lock
+resources/_gen/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# staticrypt
+.staticrypt.json
+
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
