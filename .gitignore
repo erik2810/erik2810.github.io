@@ -12,6 +12,9 @@ yarn-error.log*
 # staticrypt
 .staticrypt.json
 
+# Environment
+.env
+
 # macOS
 .DS_Store
 
