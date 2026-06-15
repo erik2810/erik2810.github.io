@@ -1,0 +1,87 @@
+{{ define "main" }}
+<div class="page-content projects-page">
+    <div class="container">
+        <header class="page-header">
+            <p class="page-label">[ Index of Work ]</p>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.subtitle }}<p class="page-subtitle">{{ . }}</p>{{ end }}
+        </header>
+
+        {{ $data := .Site.Data.projects }}
+        {{ $visible := where $data.projects "hidden" "!=" true }}
+
+        <div class="filter-bar" role="group" aria-label="Filter projects by section">
+            <button class="filter-btn active" data-filter="all">All [{{ len $visible }}]</button>
+            {{ range $data.sections }}
+                {{ $count := len (where $visible "section" .id) }}
+                {{ if gt $count 0 }}
+                <button class="filter-btn" data-filter="{{ .id }}">{{ .name }} [{{ $count }}]</button>
+                {{ end }}
+            {{ end }}
+        </div>
+
+        {{ $i := 0 }}
+        {{ range $section := $data.sections }}
+            {{ $sectionProjects := where $visible "section" $section.id }}
+            {{ if $sectionProjects }}
+            <section class="project-section" id="{{ $section.id }}" data-section="{{ $section.id }}">
+                <h2 class="section-heading"><span class="heading-index">///</span>{{ $section.name }}</h2>
+
+                {{ range $sectionProjects }}
+                {{ $i = add $i 1 }}
+                <article class="project-card{{ if .featured }} featured{{ end }}">
+                    <span class="project-id">P-{{ printf "%02d" $i }}</span>
+                    {{ if or .demo .core }}
+                    <div class="project-badges">
+                        {{ if .demo }}<span class="project-badge live-badge">Live Demo</span>{{ end }}
+                        {{ if .core }}<span class="project-badge core-badge">Core Research</span>{{ end }}
+                    </div>
+                    {{ end }}
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .description | safeHTML }}</p>
+                    {{ with .highlights }}
+                    <div class="project-highlights">
+                        <h4>Technical Highlights</h4>
+                        <ul>
+                            {{ range . }}<li>{{ . | safeHTML }}</li>{{ end }}
+                        </ul>
+                    </div>
+                    {{ end }}
+                    {{ with .tech }}
+                    <div class="project-tech">
+                        {{ range . }}<span>{{ . }}</span>{{ end }}
+                    </div>
+                    {{ end }}
+                    {{ if or .source .demo }}
+                    <div class="project-links">
+                        {{ with .source }}<a href="{{ . }}" class="btn-primary" target="_blank" rel="noopener">Source Code</a>{{ end }}
+                        {{ with .demo }}<a href="{{ . }}" class="btn-secondary" target="_blank" rel="noopener">Live Demo</a>{{ end }}
+                    </div>
+                    {{ end }}
+                </article>
+                {{ end }}
+            </section>
+            {{ end }}
+        {{ end }}
+
+        {{ .Content }}
+    </div>
+</div>
+
+<script>
+(function () {
+    var buttons = document.querySelectorAll('.filter-btn');
+    var sections = document.querySelectorAll('.project-section');
+    buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            buttons.forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var filter = btn.dataset.filter;
+            sections.forEach(function (s) {
+                s.classList.toggle('is-hidden', filter !== 'all' && s.dataset.section !== filter);
+            });
+        });
+    });
+})();
+</script>
+{{ end }}

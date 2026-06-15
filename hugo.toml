@@ -21,6 +21,13 @@ author = 'Erik Löffelholz'
   series = 'series'
 
 [markup]
+  [markup.highlight]
+    style = 'native'
+    noClasses = true
+    lineNos = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

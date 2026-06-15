@@ -1,15 +1,31 @@
+{{ define "head" }}
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+    }
+}
+</script>
+<script type="module" src="/js/hero-graph.js"></script>
+{{ end }}
+
 {{ define "main" }}
 
 <section class="hero">
-    <div class="container">
-        <p class="hero-label">M.Sc. Mathematical Physics</p>
-        <h1 class="hero-name">Erik Löffelholz</h1>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+        <div class="hero-meta">
+            <span>[ M.Sc. Mathematical Physics ]</span>
+            <span>Leipzig, DE</span>
+            <span class="meta-accent">/// Research Portfolio</span>
+        </div>
+        <h1 class="hero-name">Erik<br>L&ouml;ffelholz</h1>
         <div class="hero-trajectory">
             <span class="trajectory-node">Mathematical Physics</span>
-            <span class="trajectory-arrow"></span>
+            <span class="trajectory-arrow">&gt;&gt;&gt;</span>
             <span class="trajectory-node">Differentiable Simulation</span>
-            <span class="trajectory-arrow"></span>
-            <span class="trajectory-node active">Geometric Graph Machine Learning</span>
+            <span class="trajectory-arrow">&gt;&gt;&gt;</span>
+            <span class="trajectory-node active">Geometric Graph ML</span>
         </div>
         <p class="hero-description">
             My research develops at the interface of mathematical physics and geometric machine learning.
@@ -24,14 +40,43 @@
             <a href="/cv/" class="btn-secondary">CV</a>
         </div>
     </div>
+    <div class="hero-telemetry">
+        <div class="telemetry-grid">
+            {{ $visible := 0 }}
+            {{ $live := 0 }}
+            {{ range .Site.Data.projects.projects }}
+                {{ if not .hidden }}
+                    {{ $visible = add $visible 1 }}
+                    {{ if .demo }}{{ $live = add $live 1 }}{{ end }}
+                {{ end }}
+            {{ end }}
+            <div class="telemetry-cell">
+                <span class="t-key">Focus</span>
+                <span class="t-val">Geometric Graph ML</span>
+            </div>
+            <div class="telemetry-cell">
+                <span class="t-key">Projects</span>
+                <span class="t-val">{{ printf "%02d" $visible }} / {{ printf "%02d" $live }} live demos</span>
+            </div>
+            <div class="telemetry-cell">
+                <span class="t-key">Affiliation</span>
+                <span class="t-val">MPI MiS Leipzig</span>
+            </div>
+            <div class="telemetry-cell">
+                <span class="t-key">Status</span>
+                <span class="t-val"><span class="status-dot"></span>Open to PhD positions</span>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="home-sections">
-    <div class="container">
+    <div class="container-wide">
+        <p class="home-section-label"><span class="label-index">01</span>Fields of Work</p>
         <div class="section-grid">
 
             <div class="section-card">
-                <div class="card-accent"></div>
+                <span class="card-index">01 / RESEARCH</span>
                 <h2>Research Vision</h2>
                 <p>
                     I study how complex geometric structure emerges from simple local constraints.
@@ -44,7 +89,7 @@
             </div>
 
             <div class="section-card">
-                <div class="card-accent"></div>
+                <span class="card-index">02 / SIMULATION</span>
                 <h2>Differentiable Physics</h2>
                 <p>
                     I develop mesh-based differentiable physics simulators entirely in PyTorch, where
@@ -56,7 +101,7 @@
             </div>
 
             <div class="section-card">
-                <div class="card-accent"></div>
+                <span class="card-index">03 / LEARNING</span>
                 <h2>Graph Machine Learning</h2>
                 <p>
                     Graphs embedded in 3D space are neither purely geometric nor purely combinatorial.
@@ -72,31 +117,49 @@
 </section>
 
 <section class="home-directions">
-    <div class="container">
-        <h2>Research Directions</h2>
+    <div class="container-wide">
+        <p class="home-section-label"><span class="label-index">02</span>Research Directions</p>
         <div class="directions-grid">
             <div class="direction-item">
-                <span class="direction-marker"></span>
+                <span class="direction-marker">D-01</span>
                 <h3>Energy-Based Graph Modeling</h3>
                 <p>Learning energy functionals over graph structures and 3D embeddings.</p>
             </div>
             <div class="direction-item">
-                <span class="direction-marker"></span>
+                <span class="direction-marker">D-02</span>
                 <h3>Differentiable Growth Processes</h3>
                 <p>Modeling generative branching and growth via differentiable local rules.</p>
             </div>
             <div class="direction-item">
-                <span class="direction-marker"></span>
+                <span class="direction-marker">D-03</span>
                 <h3>Geometric Graph Metrics</h3>
                 <p>Rigorous comparison of structured geometric objects in embedding spaces.</p>
             </div>
             <div class="direction-item">
-                <span class="direction-marker"></span>
+                <span class="direction-marker">D-04</span>
                 <h3>Equivariant Structured Systems</h3>
                 <p>Integrating symmetry constraints into hybrid discrete&ndash;continuous architectures.</p>
             </div>
         </div>
     </div>
 </section>
+
+{{ $posts := where .Site.RegularPages "Section" "blog" }}
+{{ if $posts }}
+<section class="home-writing">
+    <div class="container-wide">
+        <p class="home-section-label"><span class="label-index">03</span>Recent Writing</p>
+        <div class="writing-list">
+            {{ range first 5 $posts.ByDate.Reverse }}
+            <a class="writing-row" href="{{ .RelPermalink }}">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+                <span class="writing-title">{{ .Title }}</span>
+                <span class="writing-arrow">&rarr;</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
 
 {{ end }}

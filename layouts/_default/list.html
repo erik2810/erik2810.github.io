@@ -2,6 +2,7 @@
 <div class="page-content">
     <div class="container">
         <header class="page-header">
+            {{ with .Params.label }}<p class="page-label">{{ . }}</p>{{ end }}
             <h1>{{ .Title }}</h1>
             {{ with .Params.subtitle }}<p class="page-subtitle">{{ . }}</p>{{ end }}
         </header>
@@ -10,18 +11,21 @@
         </div>
         {{ if .Pages }}
         <div class="post-list">
-            {{ range .Pages }}
+            {{ range $i, $page := .Pages.ByDate.Reverse }}
             <article class="post-preview">
+                <span class="post-index">{{ printf "N-%02d" (add $i 1) }}</span>
                 <div class="post-meta">
-                    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
-                    {{ with .Params.tags }}
+                    {{ if not $page.Date.IsZero }}
+                    <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006-01-02" }}</time>
+                    {{ end }}
+                    {{ with $page.Params.tags }}
                     <div class="post-tags">
                         {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
                     </div>
                     {{ end }}
                 </div>
-                <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-                {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+                <h2><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+                {{ with $page.Params.summary }}<p>{{ . }}</p>{{ end }}
             </article>
             {{ end }}
         </div>

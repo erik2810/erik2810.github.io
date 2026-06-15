@@ -1,0 +1,201 @@
+# Project showcase data — rendered by layouts/_default/projects.html
+# Add a project here and it appears on /projects/ automatically.
+# Fields: id, section, title, description (HTML allowed), highlights[],
+#         tech[], source (GitHub URL), demo (live URL), featured, core, hidden
+
+sections:
+  - id: graph-ml
+    name: Graph Machine Learning & Generative Modeling
+  - id: simulation
+    name: Differentiable Simulation & Physics
+  - id: scientific-computing
+    name: Mathematical Physics & Scientific Computing
+  - id: applications
+    name: Applied Machine Learning
+
+projects:
+  - id: graph-ml-lab
+    section: graph-ml
+    title: "Graph ML Lab: 3D Spatial Graph Generation"
+    featured: true
+    core: true
+    description: >-
+      From-scratch implementations of graph machine learning models using raw PyTorch tensor
+      operations. The core focus is on <strong>spatial graph generation for 3D tree
+      morphologies</strong>. This includes a conditional graph VAE, autoregressive spatial tree
+      generation, and joint discrete-continuous diffusion models that operate simultaneously over
+      graph topology and 3D node positions.
+    highlights:
+      - Autoregressive spatial tree VAE with joint topology–geometry sampling
+      - "Joint discrete-continuous diffusion: simultaneous denoising of graph structure and 3D positions"
+      - Graph VAE and discrete denoising diffusion for complex topology generation
+      - GCN and GAT layers with multi-head attention, built without external GNN libraries
+    tech: [PyTorch, Graph Neural Networks, Diffusion Models, Discrete-Continuous ML]
+    source: https://github.com/erik2810/ml-projects
+    demo: https://erik2810.github.io/ml-projects/
+
+  - id: mesh-physics
+    section: simulation
+    title: Mesh-Based Differentiable Physics Simulator
+    featured: true
+    core: true
+    description: >-
+      A fully differentiable mesh-based physics simulator implemented entirely in PyTorch.
+      It initializes particle–spring systems from mesh topology, encodes structural relationships
+      as interaction rules, and models physical forces via energy-based formulations.
+    highlights:
+      - Mesh topology to graph representation mapping
+      - Energy-based formulation for emergent structural dynamics
+      - End-to-end backpropagation through continuous dynamics
+    tech: [PyTorch, Differentiable Simulation, Topology]
+
+  - id: knitted-models
+    section: simulation
+    title: Knitted Models
+    description: >-
+      Generates woven, knitted, and chain-mail strand patterns on quad meshes. Takes a mesh with
+      quadrilateral faces, analyzes its topology via half-edge data structures, traces continuous
+      strand paths, and applies geometric design patterns to produce 3D curves rendered as tubes
+      or exported as OBJ files.
+    highlights:
+      - Half-edge mesh data structure for topological traversal
+      - Catmull-Rom and Hermite spline interpolation for smooth strand geometry
+      - Weave, knit-loop, and chain-mail pattern generation from quad topology
+      - GPU path tracing for realistic rendering
+    tech: [TypeScript, Three.js, Vite, Computational Geometry]
+
+  - id: traer-physics
+    section: simulation
+    title: Traer Physics Simulations
+    description: >-
+      Real-time particle physics simulations inspired by Traer Physics. Five simulation modes:
+      spring-connected triangle, inverse-square orbital attraction, dangling rope chain,
+      12&times;12 cloth grid with structural/shear/bending springs, and a 5&times;5&times;5
+      3D elastic mesh. Runs standalone in the browser or with a PyTorch backend streaming over
+      WebSocket at 60 Hz.
+    highlights:
+      - Float32Array buffers for high-performance browser-side computation
+      - Structural, shear, and bending spring constraints for cloth simulation
+      - Optional PyTorch backend with binary WebSocket protocol at 60 Hz
+      - Interactive parameter control via lil-gui
+    tech: [TypeScript, Three.js, PyTorch, WebSocket, Vite]
+    source: https://github.com/erik2810/traerphysics-js
+    demo: https://erik2810.github.io/traerphysics-js/
+
+  - id: ricci-flow
+    section: simulation
+    title: Ricci Flow on Surfaces of Revolution
+    description: >-
+      Interactive visualization of Ricci flow — the geometric evolution equation that deforms
+      Riemannian metrics toward constant curvature. Based on the Rubinstein–Sinclair formulation
+      for surfaces of revolution. Real-time 3D rendering with curvature-based coloring, multiple
+      presets (sphere, dumbbell, peanut), and a Python numerical solver using finite differences
+      with Fourier filtering for stability.
+    highlights:
+      - Finite-difference PDE solver with Fourier filtering and reparametrization
+      - WebSocket streaming from Python backend to Three.js frontend
+      - Curvature coloring and cross-section visualization
+    tech: [Python, NumPy/SciPy, Three.js, WebSocket]
+
+  - id: diffqft
+    section: scientific-computing
+    title: "DiffQFT: Differentiable Quantum Field Theory"
+    featured: true
+    core: true
+    description: >-
+      Differentiable holographic computations in Euclidean AdS<sub>2</sub> with full automatic
+      differentiation. Computes Witten diagram integrals, bulk propagators, and correlation
+      functions for the Sine-Gordon theory. Trains neural surrogates that approximate expensive
+      Monte Carlo integrations. Includes a PINN for the Klein-Gordon equation and an inverse
+      discovery workflow to recover coupling constants from boundary data.
+    highlights:
+      - Custom autograd Functions for hyperbolic-space integration
+      - Neural surrogate training to replace Monte Carlo evaluation
+      - PINN solver for the Klein-Gordon equation on AdS
+      - "Inverse holography: recovering bulk couplings from boundary observables"
+    tech: [PyTorch, AdS/CFT, PINNs, Monte Carlo, FastAPI]
+    source: https://github.com/erik2810/DiffQFT
+    demo: https://erik2810.github.io/DiffQFT/
+
+  - id: neural-ode-lorenz
+    section: scientific-computing
+    title: "Neural ODE: Lorenz Attractor"
+    description: >-
+      A neural network that learns chaotic dynamics from scratch. The green trail traces the true
+      Lorenz attractor via a 4th-order Runge-Kutta integrator; the red trail is a 3-layer MLP
+      trained on-the-fly with backpropagation and Adam — all implemented as raw matrix math in
+      JavaScript, no ML libraries.
+    highlights:
+      - "From-scratch neural network: matrix class, He initialization, forward/backward pass, Adam optimizer"
+      - RK4 numerical integrator for ground-truth chaotic trajectories
+      - Real-time training loop visible in the browser
+      - Companion PyTorch prototype backpropagating through the RK4 solver
+    tech: [Neural ODEs, PyTorch, JavaScript, Three.js]
+    source: https://github.com/erik2810/differentiable-physics-engine
+    demo: https://erik2810.github.io/differentiable-physics-engine/
+
+  - id: pinn-solver
+    section: scientific-computing
+    title: PINN Solver
+    description: >-
+      Physics-Informed Neural Network solver for 10 partial differential equations — Burgers,
+      Heat, Wave, Advection, Convection-Diffusion, Reaction-Diffusion, Allen-Cahn, KdV, Burgers
+      Shock, and Cubic NLS. The static demo runs inference entirely client-side in JavaScript
+      with pre-trained models.
+    highlights:
+      - "Physics-informed loss: PDE residual and boundary/initial conditions"
+      - Client-side inference in JavaScript — no backend required
+      - Training CLI for custom equations and hyperparameter sweeps
+    tech: [PyTorch, PINNs, JavaScript, FastAPI]
+    source: https://github.com/erik2810/pde-solver
+    demo: https://erik2810.github.io/pde-solver/
+
+  - id: integration-visualizer
+    section: scientific-computing
+    title: Integration Visualizer
+    description: >-
+      Computes and visualizes integrals from basic definite integrals to surface integrals and
+      flux. Covers single, double, triple, line, surface, and flux integrals using symbolic
+      (SymPy), numerical (SciPy), and Monte Carlo (PyTorch) methods. Verifies Green's, Stokes',
+      and Divergence theorems with step-by-step solutions.
+    highlights:
+      - Interactive 3D visualization of surfaces, vector fields, and integration regions
+      - Symbolic, numerical, and Monte Carlo computation pipelines
+      - "Theorem verification: Green, Stokes, Divergence"
+    tech: [React, Three.js, SymPy, PyTorch, FastAPI]
+    source: https://github.com/erik2810/integration-visualizer
+    demo: https://erik2810.github.io/integration-visualizer/
+
+  # Hidden entries — set hidden: false to publish
+  - id: physics-math-app
+    section: applications
+    hidden: true
+    title: Physics & Mathematics App
+    description: >-
+      Interactive learning tool covering expression evaluation, physics formula calculators
+      (kinematics, energy, force, momentum), matrix and statistics tools, geometry calculators,
+      interactive simulations (pendulum, wave), molecular viewer, function plotter, and vector
+      field visualizations (electric, magnetic, gravitational).
+    highlights:
+      - Symbolic expression parser and evaluator via math.js
+      - "Vector field rendering: Coulomb, gravitational, Lorentz force"
+      - Interactive pendulum and wave simulations
+    tech: [React, math.js, Recharts, KaTeX, Tailwind CSS]
+    source: https://github.com/erik2810/physics-math-app
+
+  - id: cs2-tactics
+    section: applications
+    hidden: true
+    title: CS2 Tactics Assistant
+    description: >-
+      Post-match and real-time tactical analysis for Counter-Strike 2. Parses demo files to
+      evaluate movement, aim, and strategic decision-making. Features a 2D demo viewer with radar
+      maps, movement analysis (counter-strafe, path efficiency), aim metrics (headshot rate, ADR,
+      spray control), strategy evaluation (KAST, HLTV Rating 2.0), and Game State Integration
+      for live coaching.
+    highlights:
+      - LSTM and attention-based models for movement pattern classification
+      - Demo file parsing with demoparser2 for full round reconstruction
+      - Real-time Game State Integration via WebSocket
+    tech: [PyTorch, LSTM, Attention, FastAPI, WebSocket]
+    source: https://github.com/erik2810/cs2-tactics-assistant
