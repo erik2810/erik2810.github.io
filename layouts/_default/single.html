@@ -1,15 +1,51 @@
 {{ define "main" }}
+{{ $isPost := or (eq .Section "blog") (eq .Section "library") }}
+{{ if $isPost }}<div class="progress-bar" id="progress-bar"></div>{{ end }}
 <article class="page-content">
     <div class="container">
         {{ if not .Params.hide_title }}
         <header class="page-header">
+            {{ if $isPost }}
+            <div class="post-meta">
+                {{ if not .Date.IsZero }}
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+                {{ end }}
+                {{ with .Params.tags }}
+                <div class="post-tags">
+                    {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+                </div>
+                {{ end }}
+            </div>
+            {{ else }}
+            {{ with .Params.label }}<p class="page-label">{{ . }}</p>{{ end }}
+            {{ end }}
             <h1>{{ .Title }}</h1>
             {{ with .Params.subtitle }}<p class="page-subtitle">{{ . }}</p>{{ end }}
         </header>
+        {{ end }}
+        {{ if and $isPost .TableOfContents (gt (len .TableOfContents) 60) }}
+        <details class="post-toc" open>
+            <summary>Contents</summary>
+            {{ .TableOfContents }}
+        </details>
         {{ end }}
         <div class="content">
             {{ .Content }}
         </div>
     </div>
 </article>
+{{ if $isPost }}
+<script>
+(function () {
+    var bar = document.getElementById('progress-bar');
+    function update() {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+})();
+</script>
+{{ end }}
 {{ end }}

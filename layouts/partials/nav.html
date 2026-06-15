@@ -1,6 +1,6 @@
 <nav class="site-nav">
     <div class="nav-container">
-        <a href="/" class="nav-logo">Erik Löffelholz</a>
+        <a href="/" class="nav-logo"><span class="logo-mark">&#9632;</span>E.L&Ouml;FFELHOLZ</a>
         <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" aria-label="Toggle navigation">
         <label for="nav-toggle" class="nav-toggle-label">
             <span></span>
@@ -8,12 +8,12 @@
             <span></span>
         </label>
         <div class="nav-links">
-            {{ range .Site.Menus.main }}
-            <a href="{{ .URL }}"
-               {{ if .Params.external }}target="_blank" rel="noopener"{{ end }}
-               {{ if and (not .Params.external) ($.IsMenuCurrent "main" .) }}class="active"{{ end }}>
-                {{- .Name -}}
-                {{- if .Params.external }}<span class="external-icon">&nearr;</span>{{ end -}}
+            {{ range $i, $item := .Site.Menus.main }}
+            <a href="{{ $item.URL }}"
+               {{ if $item.Params.external }}target="_blank" rel="noopener"{{ end }}
+               {{ if and (not $item.Params.external) ($.IsMenuCurrent "main" $item) }}class="active"{{ end }}>
+                <span class="nav-index">{{ printf "%02d" (add $i 1) }}</span>{{- $item.Name -}}
+                {{- if $item.Params.external }}<span class="external-icon">&nearr;</span>{{ end -}}
             </a>
             {{ end }}
         </div>
