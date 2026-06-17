@@ -7,7 +7,7 @@ author = 'Erik Löffelholz'
 
 [params]
   author = 'Erik Löffelholz'
-  description = 'Mathematical Physics · Differentiable Simulation · Geometric Graph Machine Learning'
+  description = 'Quantum Field Theory · AdS/CFT & Holography · Mathematical Physics'
   defaultTheme = 'light'
   ShowReadingTime = true
   ShowShareButtons = false
