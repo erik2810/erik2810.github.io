@@ -128,8 +128,8 @@
         physics-inspired generative modeling. Passionate about understanding how complex structure
         emerges from local constraints by integrating variational principles, energy-based modeling,
         and structural priors. Applied experience spans joint discrete-continuous diffusion models,
-        differentiable physics simulation, rigorous metric evaluation, and from-scratch gradient-based
-        optimization.
+        differentiable physics simulation, discrete differential geometry, mesh embeddings into curved
+        spaces, rigorous metric evaluation, and from-scratch gradient-based optimization.
     </p>
 </div>
 
@@ -166,14 +166,16 @@
     <h2>Research Experience</h2>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">Apr 2025 – Present</div>
+        <div class="cv-ent-date">Apr 2025 – May 2026</div>
         <div class="cv-ent-body">
-            <div class="cv-ent-title">Scientific Assistant — Mathematics Lab</div>
+            <div class="cv-ent-title">Scientist</div>
             <div class="cv-ent-inst">Max Planck Institute for Mathematics in the Sciences, Leipzig, Germany</div>
+            <div class="cv-ent-detail">Joined as a student research assistant (Wissenschaftliche Hilfskraft) and promoted to Scientist for the final period (Apr–May 2026).</div>
             <ul>
-                <li>Developed differentiable simulation software and 3D visualization tools</li>
-                <li>Implemented mathematical models in Python and PyTorch</li>
-                <li>Transitioned from theoretical physics modeling to computational research</li>
+                <li>Built GPU-accelerated tooling (PyTorch · Three.js) for embedding discrete meshes into Riemannian manifolds — Euclidean, spherical and hyperbolic spaces — via spring–mass energy minimization with analytic energy differentials; the computational basis for the co-authored Bridges 2026 paper on illustrating hyperbolic surfaces.</li>
+                <li>Implemented a discrete differential geometry library: cotangent Laplacians, mass matrices, Gaussian/mean curvature, heat-method geodesic distances, isotropic remeshing and dihedral-angle bending energy across CUDA, MPS and CPU backends.</li>
+                <li>Developed Ricci-flow surface evolution and procedural strand/weave generation on curved surfaces using half-edge topology, with real-time interactive 3D visualization.</li>
+                <li>Engineered differentiable mesh-based physics simulators with a binary WebSocket protocol (10–20× faster than JSON) streaming PyTorch state to browser frontends.</li>
             </ul>
         </div>
     </div>
@@ -183,23 +185,18 @@
         <div class="cv-ent-body">
             <div class="cv-ent-title">Independent Researcher &amp; Developer</div>
             <div class="cv-ent-inst">Graph ML, Computational Geometry &amp; Differentiable Physics</div>
+            <ul>
+                <li>Built a from-scratch graph ML framework in pure PyTorch (no PyG/DGL) for spatial generation of 3D tree morphologies — joint discrete–continuous diffusion and autoregressive spatial-tree VAEs over graph topology and 3D node positions, with Sholl-analysis and spatial-MMD evaluation.</li>
+                <li>Developed DiffQFT, a differentiable holographic QFT framework in Euclidean AdS₂: Witten-diagram Monte Carlo integration through PyTorch autograd, neural surrogates and a PINN for the Klein–Gordon equation.</li>
+                <li>Implemented a PINN solver for ten classical PDEs and browser-based differentiable-physics demos — a from-scratch neural ODE for chaotic Lorenz dynamics, and real-time particle/cloth simulation with an optional PyTorch backend.</li>
+                <li>Worked in AI data labeling and built practical expertise with agentic coding models and LLM-assisted development workflows.</li>
+            </ul>
         </div>
     </div>
 </div>
 
 <div class="cv-sec">
     <h2>Teaching &amp; Academic Service</h2>
-
-    <div class="cv-ent">
-        <div class="cv-ent-date">Apr 2025 – Present</div>
-        <div class="cv-ent-body">
-            <div class="cv-ent-title">Mathematics Lab Assistant (Wissenschaftliche Hilfskraft)</div>
-            <div class="cv-ent-inst">Max Planck Institute for Mathematics in the Sciences, Leipzig, Germany</div>
-            <ul>
-                <li>Supported the Mathematics Lab, facilitating practical mathematical applications and assisting in the execution of technical modeling tasks.</li>
-            </ul>
-        </div>
-    </div>
 
     <div class="cv-ent">
         <div class="cv-ent-date">Mar 2024 – Feb 2025</div>
@@ -237,15 +234,15 @@
         </div>
         <div>
             <h3>Scientific Computing</h3>
-            <p>Numerical Integration (Runge-Kutta, Monte Carlo) · NumPy · SciPy</p>
+            <p>Numerical Integration (Runge-Kutta, Monte Carlo) · Differentiable Simulation · NumPy · SciPy</p>
         </div>
         <div>
             <h3>Mathematical Methods</h3>
-            <p>Functional analysis · PDE theory · variational methods · differential geometry · group theory · Monte Carlo integration</p>
+            <p>Functional analysis · PDE theory · variational methods · differential geometry · discrete differential geometry · group theory</p>
         </div>
         <div>
-            <h3>Tools</h3>
-            <p>Git · Docker · FastAPI · LaTeX</p>
+            <h3>Tools &amp; Workflow</h3>
+            <p>Git · Docker · FastAPI · LaTeX · Agentic Coding Models · AI Data Labeling</p>
         </div>
         <div>
             <h3>Languages</h3>
@@ -268,6 +265,7 @@
 
 <div class="cv-sec">
     <h2>Selected Projects</h2>
+    <p class="cv-proj"><strong>Mesh Embeddings &amp; Discrete Differential Geometry</strong> — GPU mesh embedding into hyperbolic and spherical spaces via spring–mass energy minimization, with a discrete differential geometry operator library (cotangent Laplacian, curvature, heat-method geodesics). Computational basis for the Bridges 2026 paper.</p>
     <p class="cv-proj"><strong>Graph ML Lab</strong> — From-scratch implementations of GCN, GAT, graph VAE, discrete diffusion, and joint discrete-continuous diffusion over graph structure and 3D positions. PyTorch only, no external GNN libraries. <a href="https://github.com/erik2810/ml-projects">github.com/erik2810/ml-projects</a></p>
     <p class="cv-proj"><strong>DiffQFT</strong> — Differentiable quantum field theory computations in Euclidean AdS₂. Witten diagram integration, neural surrogates, PINN solver for the Klein-Gordon equation. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
     <p class="cv-proj"><strong>Differentiable Physics Engine</strong> — Neural ODE learning chaotic Lorenz dynamics from scratch in the browser. From-scratch backpropagation and Adam optimizer in JavaScript. <a href="https://github.com/erik2810/differentiable-physics-engine">github.com/erik2810/differentiable-physics-engine</a></p>

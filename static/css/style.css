@@ -1488,7 +1488,25 @@ td {
 }
 
 .acv-download {
-    margin-top: 0.85rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.acv-download-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-mute);
+    margin-right: 0.25rem;
+}
+
+.acv-download .btn-secondary {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.66rem;
 }
 
 .acv-section {
