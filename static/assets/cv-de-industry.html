@@ -89,6 +89,8 @@
             cursor: pointer;
         }
         .print-bar button:hover { background: #eee; }
+        .print-bar .dlbtn { background: #fff; color: #1a1a2e; padding: 6px 18px; font-size: 13px; font-weight: 600; font-family: inherit; border-radius: 4px; text-decoration: none; }
+        .print-bar .dlbtn:hover { background: #eee; color: #1a1a2e; }
 
         @media print {
             .print-bar { display: none; }
@@ -107,7 +109,7 @@
 
 <div class="print-bar">
     <span><a href="/">&larr; Zurück zur Seite</a></span>
-    <button onclick="window.print()">Als PDF speichern</button>
+    <a class="dlbtn" href="/assets/pdf/cv-de-industry.pdf" download>PDF herunterladen</a>
 </div>
 
 <header class="cv-head">
