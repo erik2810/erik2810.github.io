@@ -17,7 +17,7 @@
         <div class="hero-meta">
             <span>[ M.Sc. Mathematical Physics ]</span>
             <span>Leipzig, DE</span>
-            <span class="meta-accent">/// Research Portfolio</span>
+            <span class="meta-accent">/// DeepTech R&amp;D &middot; ML Engineering</span>
         </div>
         <h1 class="hero-name">Erik<br>L&ouml;ffelholz</h1>
         <div class="hero-trajectory">
@@ -28,12 +28,12 @@
             <span class="trajectory-node active">Quantum Field Theory &amp; Holography</span>
         </div>
         <p class="hero-description">
-            My research is rooted in quantum field theory in curved backgrounds and the AdS/CFT
-            correspondence. I study how bulk field theories in Anti-de Sitter space encode the data of a
-            conformal field theory on the boundary &mdash; concretely, the Sine-Gordon model and its
-            vertex operators in two-dimensional Euclidean AdS, their renormalization, and the structure
-            of the resulting boundary theory. Alongside this I keep an active interest in geometric and
-            differentiable machine learning.
+            DeepTech R&amp;D engineer with a foundation in mathematical physics, specializing in
+            geometric machine learning, differentiable physics, and graph neural networks. I build
+            differentiable, GPU-accelerated systems in PyTorch &mdash; from physics simulators to
+            from-scratch generative models &mdash; grounded in the same variational and geometric
+            principles I study in quantum field theory and holography. Open to fully remote ML
+            engineering, R&amp;D, and quantitative research roles across the EU.
         </p>
         <div class="hero-links">
             <a href="/research/" class="btn-primary">Research</a>
@@ -65,15 +65,64 @@
             </div>
             <div class="telemetry-cell">
                 <span class="t-key">Status</span>
-                <span class="t-val"><span class="status-dot"></span>Open to PhD positions</span>
+                <span class="t-val"><span class="status-dot"></span>Open to remote EU roles</span>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-skills">
+    <div class="container-wide">
+        <p class="home-section-label"><span class="label-index">01</span>Skills &amp; Infrastructure Stack</p>
+        <div class="skills-grid">
+
+            <div class="skill-group">
+                <h3 class="skill-group-label"><span class="sg-index">SK-01</span> Core Frameworks</h3>
+                <div class="skill-tags">
+                    <span>PyTorch</span>
+                    <span>Geometric ML (PyG)</span>
+                    <span>Scientific ML (SciML)</span>
+                    <span>JAX</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <h3 class="skill-group-label"><span class="sg-index">SK-02</span> Core Mathematics</h3>
+                <div class="skill-tags">
+                    <span>Differential Geometry</span>
+                    <span>Partial Differential Equations (PDEs)</span>
+                    <span>Graph Theory</span>
+                    <span>Energy-Based Optimization</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <h3 class="skill-group-label"><span class="sg-index">SK-03</span> Languages &amp; Graphics</h3>
+                <div class="skill-tags">
+                    <span>Python</span>
+                    <span>JavaScript / TypeScript</span>
+                    <span>WebGPU</span>
+                    <span>Three.js</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <h3 class="skill-group-label"><span class="sg-index">SK-04</span> Infrastructure &amp; Tools</h3>
+                <div class="skill-tags">
+                    <span>Git / GitHub</span>
+                    <span>Linux</span>
+                    <span>Docker</span>
+                    <span>CI/CD Pipelines</span>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
 <section class="home-sections">
     <div class="container-wide">
-        <p class="home-section-label"><span class="label-index">01</span>Fields of Work</p>
+        <p class="home-section-label"><span class="label-index">02</span>Fields of Work</p>
         <div class="section-grid">
 
             <div class="section-card">
@@ -118,7 +167,7 @@
 
 <section class="home-directions">
     <div class="container-wide">
-        <p class="home-section-label"><span class="label-index">02</span>Research Directions</p>
+        <p class="home-section-label"><span class="label-index">03</span>Research Directions</p>
         <div class="directions-grid">
             <div class="direction-item">
                 <span class="direction-marker">D-01</span>
@@ -148,7 +197,7 @@
 {{ if $posts }}
 <section class="home-writing">
     <div class="container-wide">
-        <p class="home-section-label"><span class="label-index">03</span>Recent Writing</p>
+        <p class="home-section-label"><span class="label-index">04</span>Recent Writing</p>
         <div class="writing-list">
             {{ range first 5 $posts.ByDate.Reverse }}
             <a class="writing-row" href="{{ .RelPermalink }}">

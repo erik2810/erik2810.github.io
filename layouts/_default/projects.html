@@ -38,16 +38,32 @@
                     </div>
                     {{ end }}
                     <h3>{{ .title }}</h3>
-                    <p>{{ .description | safeHTML }}</p>
+                    {{ if or .problem .solution }}
+                        {{ with .problem }}
+                        <div class="project-block">
+                            <h4><span class="blk-accent">&gt;</span> The Engineering Problem</h4>
+                            <p>{{ . | safeHTML }}</p>
+                        </div>
+                        {{ end }}
+                        {{ with .solution }}
+                        <div class="project-block">
+                            <h4><span class="blk-accent">&gt;</span> The ML &amp; Mathematical Solution</h4>
+                            <p>{{ . | safeHTML }}</p>
+                        </div>
+                        {{ end }}
+                    {{ else }}
+                        <p>{{ .description | safeHTML }}</p>
+                    {{ end }}
                     {{ with .highlights }}
                     <div class="project-highlights">
-                        <h4>Technical Highlights</h4>
+                        <h4>Methodology Highlights</h4>
                         <ul>
                             {{ range . }}<li>{{ . | safeHTML }}</li>{{ end }}
                         </ul>
                     </div>
                     {{ end }}
                     {{ with .tech }}
+                    <h4 class="tech-stack-label">Tech Stack</h4>
                     <div class="project-tech">
                         {{ range . }}<span>{{ . }}</span>{{ end }}
                     </div>

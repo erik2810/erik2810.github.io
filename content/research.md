@@ -95,9 +95,10 @@ The thesis observed that the appearance of logarithmic terms and apparent multip
     <div class="timeline-entry timeline-next">
         <div class="timeline-date">Next &gt;&gt;&gt;</div>
         <div class="timeline-body">
-            <h3>Doctoral Research</h3>
-            <p>Quantum field theory, holography, and renormalization in curved backgrounds —
-            seeking PhD positions in mathematical and theoretical physics.</p>
+            <h3>Industry R&D & ML Engineering</h3>
+            <p>Bringing a mathematical-physics foundation to applied machine learning and
+            differentiable simulation — open to fully remote ML engineering, R&amp;D, and quantitative
+            research roles across the EU.</p>
         </div>
     </div>
 </div>
@@ -150,4 +151,4 @@ I am motivated by questions of the form:
 - When do interactions in curved space generate genuinely new operator structure?
 - How can geometric and variational principles be made computational?
 
-These questions unify my work across field theory, geometry, and simulation — and they define the direction I aim to pursue in doctoral research.
+These questions unify my work across field theory, geometry, and simulation — and they shape the rigor I bring to applied R&D and machine-learning engineering.

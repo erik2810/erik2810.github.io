@@ -1,7 +1,13 @@
 # Project showcase data — rendered by layouts/_default/projects.html
 # Add a project here and it appears on /projects/ automatically.
-# Fields: id, section, title, description (HTML allowed), highlights[],
-#         tech[], source (GitHub URL), demo (live URL), featured, core, hidden
+#
+# Fields: id, section, title, problem, solution, highlights[], tech[],
+#         source (GitHub URL), demo (live URL), featured, core, hidden
+#   - problem:  "The Engineering Problem" (industry framing)
+#   - solution: "The ML / Mathematical Solution" (methodology framing)
+#   - tech:     "Tech Stack"
+#   - description: legacy single paragraph; used only as a fallback when
+#                  problem/solution are absent (e.g. hidden entries)
 
 sections:
   - id: graph-ml
@@ -9,7 +15,7 @@ sections:
   - id: simulation
     name: Differentiable Simulation & Physics
   - id: scientific-computing
-    name: Mathematical Physics & Scientific Computing
+    name: Scientific Computing & Numerical ML
   - id: applications
     name: Applied Machine Learning
 
@@ -19,18 +25,21 @@ projects:
     title: "Graph ML Lab: 3D Spatial Graph Generation"
     featured: true
     core: true
-    description: >-
-      From-scratch implementations of graph machine learning models using raw PyTorch tensor
-      operations. The core focus is on <strong>spatial graph generation for 3D tree
-      morphologies</strong>. This includes a conditional graph VAE, autoregressive spatial tree
-      generation, and joint discrete-continuous diffusion models that operate simultaneously over
-      graph topology and 3D node positions.
+    problem: >-
+      Generating realistic 3D branching morphologies — trees, neuron-like arbors — is hard because
+      proximity does not imply connectivity: the discrete graph topology and the continuous 3D
+      geometry have to be modelled jointly, which off-the-shelf generative models do not handle.
+    solution: >-
+      A from-scratch graph generative-modelling framework in pure PyTorch (no PyG/DGL) built around
+      energy-based and probabilistic generative models — a conditional graph VAE, autoregressive
+      spatial-tree generation, and joint discrete–continuous diffusion that denoises graph structure
+      and 3D node positions simultaneously.
     highlights:
-      - Autoregressive spatial tree VAE with joint topology–geometry sampling
-      - "Joint discrete-continuous diffusion: simultaneous denoising of graph structure and 3D positions"
-      - Graph VAE and discrete denoising diffusion for complex topology generation
-      - GCN and GAT layers with multi-head attention, built without external GNN libraries
-    tech: [PyTorch, Graph Neural Networks, Diffusion Models, Discrete-Continuous ML]
+      - Joint discrete–continuous diffusion over topology and 3D coordinates
+      - Autoregressive spatial-tree VAE with joint topology–geometry sampling
+      - Custom GCN/GAT message-passing layers built from raw tensor operations
+      - "Evaluation pipeline: morphological metrics, Sholl analysis, spatial MMD"
+    tech: [PyTorch, Graph Neural Networks, Diffusion Models, VAEs, FastAPI]
     source: https://github.com/erik2810/ml-projects
     demo: https://erik2810.github.io/ml-projects/
 
@@ -39,45 +48,56 @@ projects:
     title: Mesh-Based Differentiable Physics Simulator
     featured: true
     core: true
-    description: >-
-      A fully differentiable mesh-based physics simulator implemented entirely in PyTorch.
-      It initializes particle–spring systems from mesh topology, encodes structural relationships
-      as interaction rules, and models physical forces via energy-based formulations.
+    problem: >-
+      Tuning a physics simulation to hit a target behaviour normally requires gradient-free search,
+      because conventional simulators are not differentiable — slow, sample-inefficient and hard to
+      scale into an optimisation loop.
+    solution: >-
+      A fully differentiable physical pipeline in PyTorch: mesh topology initialises a
+      particle–spring system, forces follow energy-based formulations, and end-to-end
+      backpropagation through the continuous dynamics enables gradient-based simulation and
+      optimisation of physical parameters via custom PyTorch loss functions.
     highlights:
-      - Mesh topology to graph representation mapping
-      - Energy-based formulation for emergent structural dynamics
-      - End-to-end backpropagation through continuous dynamics
-    tech: [PyTorch, Differentiable Simulation, Topology]
+      - Differentiable physical pipeline — gradients flow through the full simulation
+      - Custom PyTorch loss functions for gradient-based simulation control
+      - Energy-based force formulation derived from mesh topology
+      - Vectorised, GPU-accelerated tensor operations (CUDA / MPS)
+    tech: [PyTorch, Autograd, Differentiable Simulation, "CUDA/MPS", NumPy]
 
   - id: knitted-models
     section: simulation
     title: Knitted Models
-    description: >-
-      Generates woven, knitted, and chain-mail strand patterns on quad meshes. Takes a mesh with
-      quadrilateral faces, analyzes its topology via half-edge data structures, traces continuous
-      strand paths, and applies geometric design patterns to produce 3D curves rendered as tubes
-      or exported as OBJ files.
+    problem: >-
+      Procedurally generating manufacturable woven, knit and chain-mail strand patterns on arbitrary
+      3D surfaces requires robust traversal of mesh connectivity and smooth, exportable curve
+      geometry.
+    solution: >-
+      A geometry-processing pipeline that ingests quad meshes, builds a half-edge data structure for
+      O(1) topological traversal, traces continuous strand paths, and fits Catmull-Rom / Hermite
+      splines — rendered with GPU path tracing or exported to OBJ for downstream tooling.
     highlights:
-      - Half-edge mesh data structure for topological traversal
+      - Half-edge data structure for O(1) topological traversal
       - Catmull-Rom and Hermite spline interpolation for smooth strand geometry
-      - Weave, knit-loop, and chain-mail pattern generation from quad topology
-      - GPU path tracing for realistic rendering
-    tech: [TypeScript, Three.js, Vite, Computational Geometry]
+      - Weave, knit-loop and chain-mail pattern generation from quad topology
+      - GPU path tracing for rendering; OBJ export
+    tech: [TypeScript, Three.js, Vite, WebGL, Computational Geometry]
 
   - id: traer-physics
     section: simulation
     title: Traer Physics Simulations
-    description: >-
-      Real-time particle physics simulations inspired by Traer Physics. Five simulation modes:
-      spring-connected triangle, inverse-square orbital attraction, dangling rope chain,
-      12&times;12 cloth grid with structural/shear/bending springs, and a 5&times;5&times;5
-      3D elastic mesh. Runs standalone in the browser or with a PyTorch backend streaming over
-      WebSocket at 60 Hz.
+    problem: >-
+      Interactive real-time particle and cloth simulation in the browser needs high-throughput
+      compute and an architecture that can optionally offload to a heavier GPU backend without
+      rewriting the renderer.
+    solution: >-
+      A real-time particle-system engine with structural, shear and bending spring constraints that
+      runs standalone on flat Float32Array buffers, or streams from a PyTorch backend over a binary
+      WebSocket protocol (10–20× faster than JSON) at 60 Hz behind an unchanged renderer.
     highlights:
-      - Float32Array buffers for high-performance browser-side computation
-      - Structural, shear, and bending spring constraints for cloth simulation
-      - Optional PyTorch backend with binary WebSocket protocol at 60 Hz
-      - Interactive parameter control via lil-gui
+      - Float32Array buffers for high-performance browser-side compute
+      - Structural, shear and bending constraints for cloth simulation
+      - Binary WebSocket protocol with an optional PyTorch backend at 60 Hz
+      - Decoupled compute / render architecture
     tech: [TypeScript, Three.js, PyTorch, WebSocket, Vite]
     source: https://github.com/erik2810/traerphysics-js
     demo: https://erik2810.github.io/traerphysics-js/
@@ -85,66 +105,81 @@ projects:
   - id: ricci-flow
     section: simulation
     title: Ricci Flow on Surfaces of Revolution
-    description: >-
-      Interactive visualization of Ricci flow — the geometric evolution equation that deforms
-      Riemannian metrics toward constant curvature. Based on the Rubinstein–Sinclair formulation
-      for surfaces of revolution. Real-time 3D rendering with curvature-based coloring, multiple
-      presets (sphere, dumbbell, peanut), and a Python numerical solver using finite differences
-      with Fourier filtering for stability.
+    problem: >-
+      Evolving a geometry under a curvature-driven PDE is numerically stiff and prone to blow-up,
+      and making the process explorable means streaming solver state to a 3D frontend in real time.
+    solution: >-
+      A finite-difference PDE solver with Fourier filtering and reparametrisation for stability that
+      evolves surface metrics toward constant curvature, computes curvature fields as geometric data,
+      and streams them to a Three.js frontend over WebSocket.
     highlights:
-      - Finite-difference PDE solver with Fourier filtering and reparametrization
-      - WebSocket streaming from Python backend to Three.js frontend
-      - Curvature coloring and cross-section visualization
-    tech: [Python, NumPy/SciPy, Three.js, WebSocket]
+      - Finite-difference PDE solver with Fourier filtering and reparametrisation for stability
+      - Curvature-field computation — geometric data processing
+      - Python → Three.js streaming over WebSocket
+      - Real-time 3D rendering with curvature-based colouring
+    tech: [Python, NumPy, SciPy, Three.js, WebSocket]
 
   - id: diffqft
     section: scientific-computing
-    title: "DiffQFT: Differentiable Quantum Field Theory"
+    title: "DiffQFT: Differentiable Computation on Curved Geometries"
     featured: true
     core: true
-    description: >-
-      Differentiable holographic computations in Euclidean AdS<sub>2</sub> with full automatic
-      differentiation. Computes Witten diagram integrals, bulk propagators, and correlation
-      functions for the Sine-Gordon theory. Trains neural surrogates that approximate expensive
-      Monte Carlo integrations. Includes a PINN for the Klein-Gordon equation and an inverse
-      discovery workflow to recover coupling constants from boundary data.
+    problem: >-
+      Computations on curved, non-Euclidean geometries hinge on expensive high-dimensional integrals,
+      and inferring the parameters of such a system means differentiating through that entire
+      numerical pipeline — intractable with black-box solvers.
+    solution: >-
+      A fully differentiable computation framework (PyTorch autograd) for multi-dimensional tensor
+      operations and Monte-Carlo integration over a curved 2D (hyperbolic) domain. It trains neural
+      surrogate models that replace expensive Monte-Carlo evaluations, a physics-informed neural
+      network for a non-linear PDE, and a gradient-based inverse-optimisation workflow that recovers
+      latent parameters from boundary observations.
     highlights:
-      - Custom autograd Functions for hyperbolic-space integration
-      - Neural surrogate training to replace Monte Carlo evaluation
-      - PINN solver for the Klein-Gordon equation on AdS
-      - "Inverse holography: recovering bulk couplings from boundary observables"
-    tech: [PyTorch, AdS/CFT, PINNs, Monte Carlo, FastAPI]
+      - Custom autograd functions for integration on non-Euclidean domains — complex geometric data processing and topological reasoning
+      - Neural surrogate models replacing Monte-Carlo evaluation for order-of-magnitude speedups
+      - Physics-informed neural network (PINN) for a non-linear (Klein–Gordon) PDE
+      - "Gradient-based inverse problem: recovering latent parameters from boundary data"
+      - Energy-based, non-linear (Sine-Gordon) model under a differentiable optimisation framework
+    tech: [PyTorch, Autograd, PINNs, Monte Carlo, NumPy, FastAPI]
     source: https://github.com/erik2810/DiffQFT
     demo: https://erik2810.github.io/DiffQFT/
 
   - id: neural-ode-lorenz
     section: scientific-computing
-    title: "Neural ODE: Lorenz Attractor"
-    description: >-
-      A neural network that learns chaotic dynamics from scratch. The green trail traces the true
-      Lorenz attractor via a 4th-order Runge-Kutta integrator; the red trail is a 3-layer MLP
-      trained on-the-fly with backpropagation and Adam — all implemented as raw matrix math in
-      JavaScript, no ML libraries.
+    title: "Neural ODE: Learning Chaotic Dynamics"
+    problem: >-
+      Can a neural network learn the governing equations of a chaotic dynamical system directly from
+      trajectory data — implemented entirely from scratch, with no ML libraries, to expose every part
+      of the autodiff and optimisation loop?
+    solution: >-
+      A from-scratch neural network (matrix ops, He initialisation, forward/backward pass, Adam)
+      learns the Lorenz vector field against an RK4 ground-truth integrator and trains live in the
+      browser; a companion PyTorch prototype backpropagates through the RK4 solver as a differentiable
+      simulation.
     highlights:
-      - "From-scratch neural network: matrix class, He initialization, forward/backward pass, Adam optimizer"
+      - "From-scratch neural network: matrices, He init, backprop, Adam — no ML libraries"
       - RK4 numerical integrator for ground-truth chaotic trajectories
-      - Real-time training loop visible in the browser
-      - Companion PyTorch prototype backpropagating through the RK4 solver
-    tech: [Neural ODEs, PyTorch, JavaScript, Three.js]
+      - Real-time, in-browser training loop
+      - "PyTorch prototype: gradient-based simulation through the RK4 solver"
+    tech: [PyTorch, JavaScript, Three.js, NumPy]
     source: https://github.com/erik2810/differentiable-physics-engine
     demo: https://erik2810.github.io/differentiable-physics-engine/
 
   - id: pinn-solver
     section: scientific-computing
     title: PINN Solver
-    description: >-
-      Physics-Informed Neural Network solver for 10 partial differential equations — Burgers,
-      Heat, Wave, Advection, Convection-Diffusion, Reaction-Diffusion, Allen-Cahn, KdV, Burgers
-      Shock, and Cubic NLS. The static demo runs inference entirely client-side in JavaScript
-      with pre-trained models.
+    problem: >-
+      Classical PDE solvers need bespoke meshing and a separate implementation per equation, and
+      shipping them for interactive use is heavyweight.
+    solution: >-
+      Physics-Informed Neural Networks solve 10 PDEs with a custom physics loss (PDE residual plus
+      boundary and initial conditions) — a mesh-free, gradient-based approach. Pre-trained models run
+      inference client-side in JavaScript, and a training CLI handles new equations and
+      hyperparameter sweeps.
     highlights:
-      - "Physics-informed loss: PDE residual and boundary/initial conditions"
-      - Client-side inference in JavaScript — no backend required
+      - "Custom physics-informed loss: PDE residual + boundary/initial conditions"
+      - Mesh-free, gradient-based PDE solving across 10 equations
+      - Client-side JavaScript inference — no backend required
       - Training CLI for custom equations and hyperparameter sweeps
     tech: [PyTorch, PINNs, JavaScript, FastAPI]
     source: https://github.com/erik2810/pde-solver
@@ -153,20 +188,23 @@ projects:
   - id: integration-visualizer
     section: scientific-computing
     title: Integration Visualizer
-    description: >-
-      Computes and visualizes integrals from basic definite integrals to surface integrals and
-      flux. Covers single, double, triple, line, surface, and flux integrals using symbolic
-      (SymPy), numerical (SciPy), and Monte Carlo (PyTorch) methods. Verifies Green's, Stokes',
-      and Divergence theorems with step-by-step solutions.
+    problem: >-
+      Computing and explaining integrals across symbolic, numerical and stochastic methods — and
+      verifying vector-calculus theorems — usually means stitching together disconnected tools with
+      no shared 3D visualisation.
+    solution: >-
+      A unified engine that computes single-through-flux integrals via symbolic (SymPy), numerical
+      (SciPy) and Monte-Carlo (PyTorch) pipelines, verifies the Green, Stokes and Divergence
+      theorems, and renders surfaces, vector fields and integration regions interactively in 3D.
     highlights:
-      - Interactive 3D visualization of surfaces, vector fields, and integration regions
-      - Symbolic, numerical, and Monte Carlo computation pipelines
+      - Symbolic, numerical and Monte-Carlo computation pipelines
+      - Interactive 3D visualisation of surfaces, vector fields and regions
       - "Theorem verification: Green, Stokes, Divergence"
-    tech: [React, Three.js, SymPy, PyTorch, FastAPI]
+    tech: [React, Three.js, PyTorch, SymPy, SciPy, FastAPI]
     source: https://github.com/erik2810/integration-visualizer
     demo: https://erik2810.github.io/integration-visualizer/
 
-  # Hidden entries — set hidden: false to publish
+  # Hidden entries — set hidden: false to publish (these retain legacy copy)
   - id: physics-math-app
     section: applications
     hidden: true
