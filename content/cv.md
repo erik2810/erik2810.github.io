@@ -98,7 +98,22 @@ hide_title: true
                     <li>Built a from-scratch graph ML framework in pure PyTorch (no PyG/DGL) for spatial generation of 3D tree morphologies &mdash; joint discrete&ndash;continuous diffusion and autoregressive spatial-tree VAEs over graph topology and 3D node positions, with Sholl-analysis and spatial-MMD evaluation.</li>
                     <li>Developed DiffQFT, a differentiable holographic QFT framework in Euclidean AdS<sub>2</sub>: Witten-diagram Monte Carlo integration through PyTorch autograd, neural surrogates and a PINN for the Klein&ndash;Gordon equation.</li>
                     <li>Implemented a PINN solver for ten classical PDEs and browser-based differentiable-physics demos &mdash; a from-scratch neural ODE learning chaotic Lorenz dynamics, and real-time particle/cloth simulation with an optional PyTorch backend.</li>
-                    <li>Worked in AI data labeling and built practical expertise with agentic coding models and LLM-assisted development workflows.</li>
+                    <li>Built practical expertise with agentic coding models and LLM-assisted development workflows.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="acv-entry">
+        <div class="acv-entry-row">
+            <div class="acv-entry-date">2025 – Present</div>
+            <div class="acv-entry-body">
+                <div class="acv-entry-title">Subject-Matter Expert — STEM & Coding</div>
+                <div class="acv-entry-inst">Outlier.ai &middot; AI Training & Model Evaluation</div>
+                <ul class="acv-entry-list">
+                    <li>Author and review graduate-level mathematics, physics and science prompts and solutions for large-language-model training.</li>
+                    <li>Evaluate, rank and compare model outputs (RLHF) for correctness, reasoning quality and helpfulness.</li>
+                    <li>Complete coding and code-review tasks across Python, C++, JavaScript and front-end coding.</li>
+                    <li>Contribute German-language (de-DE) prompt and audio-prompt tasks.</li>
                 </ul>
             </div>
         </div>
@@ -209,7 +224,7 @@ hide_title: true
         </div>
         <div>
             <h3>Tools & Workflow</h3>
-            <p>Git &middot; Docker &middot; FastAPI &middot; LaTeX &middot; Agentic Coding Models &middot; AI Data Labeling</p>
+            <p>Git &middot; Docker &middot; FastAPI &middot; LaTeX &middot; Agentic Coding Models &middot; AI Data Labeling &middot; RLHF / LLM Evaluation</p>
         </div>
         <div>
             <h3>Languages</h3>
