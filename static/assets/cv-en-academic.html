@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV — Erik Löffelholz (Academic)</title>
+    <title>CV Erik Löffelholz (Academic)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -125,13 +125,11 @@
 <div class="cv-sec">
     <h2>Personal Profile &amp; Research Interests</h2>
     <p>
-        Master's graduate in Mathematical Physics with a strong foundation in continuous–discrete
-        interactions and differential geometry. Currently specializing in Graph Machine Learning and
-        physics-inspired generative modeling. Passionate about understanding how complex structure
-        emerges from local constraints by integrating variational principles, energy-based modeling,
-        and structural priors. Applied experience spans joint discrete-continuous diffusion models,
-        differentiable physics simulation, discrete differential geometry, mesh embeddings into curved
-        spaces, rigorous metric evaluation, and from-scratch gradient-based optimization.
+        Mathematical Physics M.Sc. with a background in differential geometry, PDE theory and field
+        theory, now working mainly on scientific software and machine learning. I am as comfortable with
+        the maths as with the code: I have built differentiable physics simulators, graph generative
+        models, and a discrete differential geometry library, most of it written from scratch in
+        PyTorch. My recurring interest is how structured systems grow out of simple local rules.
     </p>
 </div>
 
@@ -139,24 +137,24 @@
     <h2>Education</h2>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">Oct 2021 – Sep 2025</div>
+        <div class="cv-ent-date">Oct 2021 - Sep 2025</div>
         <div class="cv-ent-body">
             <div class="cv-ent-title">M.Sc. Mathematical Physics</div>
-            <div class="cv-ent-inst">Universität Leipzig — Faculty of Physics and Earth System Sciences</div>
-            <div class="cv-ent-detail">Selected Coursework: Advanced PDE and Analysis · Differential Geometry · Quantum Field Theory · General Relativity · Group Theory</div>
+            <div class="cv-ent-inst">Universität Leipzig, Faculty of Physics and Earth System Sciences</div>
+            <div class="cv-ent-detail">Selected coursework: Advanced PDE and Analysis · Differential Geometry · Quantum Field Theory · General Relativity · Group Theory</div>
         </div>
     </div>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">Oct 2018 – Mar 2022</div>
+        <div class="cv-ent-date">Oct 2018 - Mar 2022</div>
         <div class="cv-ent-body">
             <div class="cv-ent-title">B.Sc. Physics</div>
-            <div class="cv-ent-inst">Universität Leipzig — Faculty of Physics and Earth System Sciences</div>
+            <div class="cv-ent-inst">Universität Leipzig, Faculty of Physics and Earth System Sciences</div>
         </div>
     </div>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">Aug 2010 – Jun 2018</div>
+        <div class="cv-ent-date">Aug 2010 - Jun 2018</div>
         <div class="cv-ent-body">
             <div class="cv-ent-title">Abitur</div>
             <div class="cv-ent-inst">Luther-Melanchthon-Gymnasium, Lutherstadt Wittenberg</div>
@@ -168,44 +166,44 @@
     <h2>Research Experience</h2>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">Apr 2025 – May 2026</div>
+        <div class="cv-ent-date">Apr 2025 - May 2026</div>
         <div class="cv-ent-body">
             <div class="cv-ent-title">Scientist</div>
             <div class="cv-ent-inst">Max Planck Institute for Mathematics in the Sciences, Leipzig, Germany</div>
-            <div class="cv-ent-detail">Joined as a student research assistant (Wissenschaftliche Hilfskraft) and promoted to Scientist for the final period (Apr–May 2026).</div>
+            <div class="cv-ent-detail">Started as a student research assistant (Wissenschaftliche Hilfskraft) and was promoted to Scientist for the last two months.</div>
             <ul>
-                <li>Built GPU-accelerated tooling (PyTorch · Three.js) for embedding discrete meshes into Riemannian manifolds — Euclidean, spherical and hyperbolic spaces — via spring–mass energy minimization with analytic energy differentials; the computational basis for the co-authored Bridges 2026 paper on illustrating hyperbolic surfaces.</li>
-                <li>Implemented a discrete differential geometry library: cotangent Laplacians, mass matrices, Gaussian/mean curvature, heat-method geodesic distances, isotropic remeshing and dihedral-angle bending energy across CUDA, MPS and CPU backends.</li>
-                <li>Developed Ricci-flow surface evolution and procedural strand/weave generation on curved surfaces using half-edge topology, with real-time interactive 3D visualization.</li>
-                <li>Engineered differentiable mesh-based physics simulators with a binary WebSocket protocol (10–20× faster than JSON) streaming PyTorch state to browser frontends.</li>
+                <li>Built GPU-accelerated tooling in PyTorch and Three.js for embedding discrete meshes into Riemannian manifolds (Euclidean, spherical and hyperbolic spaces) by spring-mass energy minimization with analytic differentials. This became the computational basis for our co-authored Bridges 2026 paper on illustrating hyperbolic surfaces.</li>
+                <li>Implemented a discrete differential geometry library: cotangent Laplacians, mass matrices, Gaussian and mean curvature, heat-method geodesic distances, isotropic remeshing and dihedral-angle bending energy, running on CUDA, MPS and CPU.</li>
+                <li>Developed Ricci-flow surface evolution and procedural strand and weave generation on curved surfaces using a half-edge mesh, with interactive 3D visualization.</li>
+                <li>Wrote differentiable mesh-based physics simulators with a binary WebSocket protocol that streamed PyTorch state to the browser, roughly 10 to 20 times faster than JSON.</li>
             </ul>
         </div>
     </div>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">2025 – Present</div>
+        <div class="cv-ent-date">2025 - Present</div>
         <div class="cv-ent-body">
             <div class="cv-ent-title">Independent Researcher &amp; Developer</div>
             <div class="cv-ent-inst">Graph ML, Computational Geometry &amp; Differentiable Physics</div>
             <ul>
-                <li>Built a from-scratch graph ML framework in pure PyTorch (no PyG/DGL) for spatial generation of 3D tree morphologies — joint discrete–continuous diffusion and autoregressive spatial-tree VAEs over graph topology and 3D node positions, with Sholl-analysis and spatial-MMD evaluation.</li>
-                <li>Developed DiffQFT, a differentiable holographic QFT framework in Euclidean AdS₂: Witten-diagram Monte Carlo integration through PyTorch autograd, neural surrogates and a PINN for the Klein–Gordon equation.</li>
-                <li>Implemented a PINN solver for ten classical PDEs and browser-based differentiable-physics demos — a from-scratch neural ODE for chaotic Lorenz dynamics, and real-time particle/cloth simulation with an optional PyTorch backend.</li>
-                <li>Built practical expertise with agentic coding models and LLM-assisted development workflows.</li>
+                <li>Built a graph ML framework from scratch in pure PyTorch (no PyG or DGL) for generating 3D tree morphologies. It covers joint discrete-continuous diffusion and autoregressive spatial-tree VAEs over both graph topology and 3D node positions, evaluated with Sholl analysis and spatial MMD.</li>
+                <li>Developed DiffQFT, a differentiable holographic QFT framework in Euclidean AdS₂: Witten-diagram Monte Carlo integration through PyTorch autograd, neural surrogates, and a PINN for the Klein-Gordon equation.</li>
+                <li>Implemented a PINN solver for ten classical PDEs, plus browser-based physics demos: a neural ODE that learns chaotic Lorenz dynamics from scratch, and a real-time particle and cloth simulation with an optional PyTorch backend.</li>
+                <li>Work fluently with agentic coding models and LLM-assisted development.</li>
             </ul>
         </div>
     </div>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">2025 – Present</div>
+        <div class="cv-ent-date">2025 - Present</div>
         <div class="cv-ent-body">
-            <div class="cv-ent-title">Subject-Matter Expert — STEM &amp; Coding</div>
-            <div class="cv-ent-inst">Outlier.ai — AI Training &amp; Model Evaluation</div>
+            <div class="cv-ent-title">Subject-Matter Expert, STEM &amp; Coding</div>
+            <div class="cv-ent-inst">Outlier.ai, AI Training &amp; Model Evaluation</div>
             <ul>
-                <li>Author and review graduate-level mathematics, physics and science prompts and solutions for large-language-model training.</li>
-                <li>Evaluate, rank and compare model outputs (RLHF) for correctness, reasoning quality and helpfulness.</li>
-                <li>Complete coding and code-review tasks across Python, C++, JavaScript and front-end coding.</li>
-                <li>Contribute German-language (de-DE) prompt and audio-prompt tasks.</li>
+                <li>Write and review graduate-level mathematics, physics and science prompts and solutions for large-language-model training.</li>
+                <li>Rate and compare model outputs (RLHF) for correctness, reasoning quality and helpfulness.</li>
+                <li>Do coding and code-review tasks in Python, C++, JavaScript and front-end coding.</li>
+                <li>Contribute German (de-DE) prompt and audio-prompt tasks.</li>
             </ul>
         </div>
     </div>
@@ -215,12 +213,12 @@
     <h2>Teaching &amp; Academic Service</h2>
 
     <div class="cv-ent">
-        <div class="cv-ent-date">Mar 2024 – Feb 2025</div>
+        <div class="cv-ent-date">Mar 2024 - Feb 2025</div>
         <div class="cv-ent-body">
-            <div class="cv-ent-title">Working Student — Mathematics Editorial</div>
+            <div class="cv-ent-title">Working Student, Mathematics Editorial</div>
             <div class="cv-ent-inst">Ernst Klett Verlag GmbH, Leipzig</div>
             <ul>
-                <li>Conducted technical and editorial reviews of mathematical content, ensuring structural clarity and pedagogical accuracy for educational publications.</li>
+                <li>Reviewed mathematics content for school textbooks, checking it for technical correctness and clarity.</li>
             </ul>
         </div>
     </div>
@@ -262,7 +260,7 @@
         </div>
         <div>
             <h3>Languages</h3>
-            <p>German (native) · English (C1 — full professional proficiency)</p>
+            <p>German (native) · English (C1, full professional proficiency)</p>
         </div>
     </div>
 </div>
@@ -281,10 +279,10 @@
 
 <div class="cv-sec">
     <h2>Selected Projects</h2>
-    <p class="cv-proj"><strong>Mesh Embeddings &amp; Discrete Differential Geometry</strong> — GPU mesh embedding into hyperbolic and spherical spaces via spring–mass energy minimization, with a discrete differential geometry operator library (cotangent Laplacian, curvature, heat-method geodesics). Computational basis for the Bridges 2026 paper.</p>
-    <p class="cv-proj"><strong>Graph ML Lab</strong> — From-scratch implementations of GCN, GAT, graph VAE, discrete diffusion, and joint discrete-continuous diffusion over graph structure and 3D positions. PyTorch only, no external GNN libraries. <a href="https://github.com/erik2810/ml-projects">github.com/erik2810/ml-projects</a></p>
-    <p class="cv-proj"><strong>DiffQFT</strong> — Differentiable quantum field theory computations in Euclidean AdS₂. Witten diagram integration, neural surrogates, PINN solver for the Klein-Gordon equation. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
-    <p class="cv-proj"><strong>Differentiable Physics Engine</strong> — Neural ODE learning chaotic Lorenz dynamics from scratch in the browser. From-scratch backpropagation and Adam optimizer in JavaScript. <a href="https://github.com/erik2810/differentiable-physics-engine">github.com/erik2810/differentiable-physics-engine</a></p>
+    <p class="cv-proj"><strong>Mesh Embeddings &amp; Discrete Differential Geometry.</strong> GPU mesh embedding into hyperbolic and spherical spaces by spring-mass energy minimization, with a discrete differential geometry operator library (cotangent Laplacian, curvature, heat-method geodesics). Computational basis for the Bridges 2026 paper.</p>
+    <p class="cv-proj"><strong>Graph ML Lab.</strong> GCN, GAT, graph VAE, discrete diffusion, and joint discrete-continuous diffusion over graph structure and 3D positions, all from scratch. PyTorch only, no external GNN libraries. <a href="https://github.com/erik2810/ml-projects">github.com/erik2810/ml-projects</a></p>
+    <p class="cv-proj"><strong>DiffQFT.</strong> Differentiable quantum field theory in Euclidean AdS₂: Witten-diagram integration, neural surrogates, and a PINN solver for the Klein-Gordon equation. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
+    <p class="cv-proj"><strong>Differentiable Physics Engine.</strong> A neural ODE that learns chaotic Lorenz dynamics from scratch in the browser, with backpropagation and an Adam optimizer written by hand in JavaScript. <a href="https://github.com/erik2810/differentiable-physics-engine">github.com/erik2810/differentiable-physics-engine</a></p>
     <p class="cv-note">Full project portfolio with live demos at <a href="https://erik2810.github.io/projects/">erik2810.github.io/projects</a></p>
 </div>
 

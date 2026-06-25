@@ -1,7 +1,7 @@
 ---
 title: "Research"
 subtitle: "Quantum Field Theory, Holography & the AdS/CFT Correspondence"
-description: "Research overview — Erik Löffelholz"
+description: "Research overview, Erik Löffelholz"
 layout: "single"
 label: "[ Research Program ]"
 math: true
@@ -9,30 +9,30 @@ math: true
 
 ## Research Identity
 
-My research is rooted in **mathematical physics** — specifically **quantum field theory in curved backgrounds**, the **AdS/CFT correspondence**, and the **renormalization** of interacting theories. I study how bulk field theories in Anti-de Sitter space encode the data of a conformal field theory living on the boundary, and how interactions deform that dictionary.
+My background is in mathematical physics: quantum field theory in curved backgrounds, the AdS/CFT correspondence, and the renormalization of interacting theories. I study how bulk field theories in Anti-de Sitter space encode the data of a conformal field theory on the boundary, and how interactions deform that dictionary.
 
-My master's thesis and a follow-up article develop this program concretely for the **Sine-Gordon model in two-dimensional Euclidean Anti-de Sitter space** ($\text{EAdS}_2$), where vertex operators serve as the central observables.
+My master's thesis and a follow-up article work this out for the Sine-Gordon model in two-dimensional Euclidean Anti-de Sitter space ($\text{EAdS}_2$), where the vertex operators are the main observables.
 
-Alongside this core direction I maintain an active, secondary interest in **geometric and differentiable machine learning** — energy-based modeling of geometric graphs and differentiable physics — which connects naturally to the variational and geometric structures that pervade field theory.
+I also keep a second, active interest in geometric and differentiable machine learning: energy-based modeling of geometric graphs and differentiable physics. It runs on the same variational and geometric structures as field theory, so the two sides feed each other.
 
 ## Featured Work
 
 <div class="publication">
-    <p class="pub-status">Article — In Preparation / To Be Submitted to JHEP</p>
+    <p class="pub-status">Article, in preparation / to be submitted to JHEP</p>
     <p class="pub-authors"><strong>Erik Löffelholz</strong></p>
     <p class="pub-title">Interacting Vertex Operators in Euclidean AdS₂: Connected Correlators, Holographic Renormalization and Anomalous Dimensions</p>
     <p class="pub-venue">Extends the free-field analysis of the thesis to the interacting theory. &middot; <a href="/assets/pdf/interacting-vertex-operators-eads2-abstract.pdf" target="_blank" rel="noopener">Read the abstract (PDF)</a></p>
 </div>
 
 <div class="publication">
-    <p class="pub-status">M.Sc. Thesis — Universität Leipzig, 2024</p>
+    <p class="pub-status">M.Sc. Thesis, Universität Leipzig, 2024</p>
     <p class="pub-authors"><strong>Erik Löffelholz</strong> &middot; Supervisor: Prof. Dr. Stefan Hollands &middot; Second Examiner: Dr. Markus Fröb</p>
     <p class="pub-title">The Sine-Gordon Model in Hyperbolic Space and the AdS/CFT Correspondence</p>
     <p class="pub-venue">Faculty of Physics and Earth System Sciences. &middot; <a href="/assets/pdf/master-thesis-sine-gordon-ads-cft.pdf" target="_blank" rel="noopener">Read the thesis (PDF)</a></p>
 </div>
 
 <div class="publication">
-    <p class="pub-status">Under Review — Bridges Conference 2026</p>
+    <p class="pub-status">Under review, Bridges Conference 2026</p>
     <p class="pub-authors">Fabian Lander, <strong>Erik Löffelholz</strong>, Diaaeldin Taha, Steve Trettel, Anna Wienhard</p>
     <p class="pub-title">Illustrating Hyperbolic Surfaces with Mesh Embeddings</p>
     <p class="pub-venue">Regular Papers Track. &middot; Submitted 2026</p>
@@ -46,50 +46,50 @@ The AdS/CFT correspondence conjectures a duality between a field theory in $(d+1
 
 $$ds^2 = \frac{L^2}{z^2}\left(dz^2 + dp^2\right), \qquad R = -\frac{2}{L^2},$$
 
-where $z>0$ is the holographic radial direction and $p$ is the boundary coordinate. A free scalar of mass $m$ is dual to a boundary operator of scaling dimension fixed by the Breitenlohner–Freedman analysis,
+where $z>0$ is the holographic radial direction and $p$ is the boundary coordinate. A free scalar of mass $m$ is dual to a boundary operator whose scaling dimension is fixed by the Breitenlohner-Freedman analysis,
 
 $$\Delta = \tfrac{1}{2} + \sqrt{\tfrac{1}{4} + m^2 L^2}.$$
 
-The observables of interest are **normal-ordered vertex operators** $V_\beta = {:}e^{i\beta\phi}{:}$, drawn from the Sine-Gordon interaction. Building the free massive bulk propagator and its boundary limit yields a **bulk-to-boundary dictionary** that maps these vertex operators to dual scalar primaries on the boundary CFT.
+The observables I care about are normal-ordered vertex operators $V_\beta = {:}e^{i\beta\phi}{:}$, drawn from the Sine-Gordon interaction. Building the free massive bulk propagator and its boundary limit gives a bulk-to-boundary dictionary that maps these vertex operators to dual scalar primaries on the boundary CFT.
 
 ### Interacting Theory & Renormalization
 
-Adding a Sine-Gordon bulk interaction and expanding the connected generating functional perturbatively produces UV and IR structure that must be regularized — I use a **heat-kernel** decomposition of the propagators to define a Gaussian measure and control the divergences. Renormalizing the two- and three-point functions of vertex operators yields an **anomalous dimension** of the dual operator,
+Adding a Sine-Gordon bulk interaction and expanding the connected generating functional perturbatively produces UV and IR structure that has to be regularized. I use a heat-kernel decomposition of the propagators to define a Gaussian measure and keep the divergences under control. Renormalizing the two- and three-point functions of the vertex operators gives an anomalous dimension of the dual operator,
 
 $$\Delta \;\longrightarrow\; \Delta_1 = \Delta + \lambda\,\Delta^{(1)} + \mathcal{O}(\lambda^2),$$
 
-extracted via explicit **holographic renormalization**, including an analysis of scheme dependence.
+which I extract by explicit holographic renormalization, scheme dependence included.
 
 ### The Logarithmic-CFT Question
 
-The thesis observed that the appearance of logarithmic terms and apparent multiplets $\widetilde{\mathcal{O}} = \{\hat{\mathcal{O}}, {:}\mathcal{O}^2{:}\}$ hints at a **logarithmic CFT** structure on the boundary. The follow-up article sharpens this: a careful treatment of the connected correlators and the renormalization group shows that — despite the logarithms — the boundary theory exhibits **ordinary anomalous scaling rather than genuine logarithmic CFT structure**. Resolving exactly when curved-space interactions do or do not generate logarithmic multiplets is a central thread of my ongoing work.
+The thesis noticed that the logarithmic terms and the apparent multiplets $\widetilde{\mathcal{O}} = \{\hat{\mathcal{O}}, {:}\mathcal{O}^2{:}\}$ look like a logarithmic CFT on the boundary. The follow-up article sharpens that. Once you treat the connected correlators and the renormalization group carefully, the boundary theory turns out to show ordinary anomalous scaling, not a genuine logarithmic CFT. Working out exactly when curved-space interactions do and do not generate logarithmic multiplets is one of the main threads I am still pulling on.
 
 ## Trajectory
 
 <div class="timeline">
     <div class="timeline-entry">
-        <div class="timeline-date">2018 — 2022</div>
+        <div class="timeline-date">2018-2022</div>
         <div class="timeline-body">
-            <h3>B.Sc. Physics — Universität Leipzig</h3>
+            <h3>B.Sc. Physics, Universität Leipzig</h3>
             <p>Foundation in theoretical and mathematical physics.</p>
         </div>
     </div>
     <div class="timeline-entry">
-        <div class="timeline-date">2021 — 2025</div>
+        <div class="timeline-date">2021-2025</div>
         <div class="timeline-body">
-            <h3>M.Sc. Mathematical Physics — Universität Leipzig</h3>
+            <h3>M.Sc. Mathematical Physics, Universität Leipzig</h3>
             <p>Thesis on the Sine-Gordon model in hyperbolic space and AdS/CFT, supervised by
             Prof. Dr. Stefan Hollands. Coursework in quantum field theory on curved spacetimes,
             general relativity, advanced PDE and analysis, and group theory.</p>
         </div>
     </div>
     <div class="timeline-entry">
-        <div class="timeline-date">2025 — 2026</div>
+        <div class="timeline-date">2025-2026</div>
         <div class="timeline-body">
             <h3>Max Planck Institute for Mathematics in the Sciences</h3>
-            <p>Computational and geometric research — discrete differential geometry, mesh embeddings
-            into curved spaces, and differentiable simulation — sharpening the numerical and geometric
-            toolset that complements analytic field theory.</p>
+            <p>Computational and geometric research: discrete differential geometry, mesh embeddings
+            into curved spaces, and differentiable simulation. This sharpened the numerical side that
+            sits next to the analytic field-theory work.</p>
         </div>
     </div>
     <div class="timeline-entry timeline-next">
@@ -97,7 +97,7 @@ The thesis observed that the appearance of logarithmic terms and apparent multip
         <div class="timeline-body">
             <h3>Industry R&D & ML Engineering</h3>
             <p>Bringing a mathematical-physics foundation to applied machine learning and
-            differentiable simulation — open to fully remote ML engineering, R&amp;D, and quantitative
+            differentiable simulation. Open to fully remote ML engineering, R&amp;D, and quantitative
             research roles across the EU.</p>
         </div>
     </div>
@@ -129,7 +129,7 @@ The thesis observed that the appearance of logarithmic terms and apparent multip
     <div class="topic-card">
         <span class="topic-index">T-05</span>
         <h3>Logarithmic CFT vs. Ordinary Scaling</h3>
-        <p>When do curved-space interactions generate logarithmic multiplets — and when only ordinary anomalous scaling?</p>
+        <p>When do curved-space interactions generate logarithmic multiplets, and when only ordinary anomalous scaling?</p>
     </div>
     <div class="topic-card">
         <span class="topic-index">T-06</span>
@@ -140,7 +140,7 @@ The thesis observed that the appearance of logarithmic terms and apparent multip
 
 <h2 id="geometric-ml">Secondary Direction: Geometric & Differentiable ML</h2>
 
-Parallel to the field-theory program, I work on **energy-based modeling of geometric graphs** and **differentiable physics**. Graphs embedded in 3D space — neuronal morphologies, botanical trees — are neither purely geometric nor purely combinatorial, and modeling them couples discrete topology with continuous geometry. Concretely this has included a from-scratch graph ML framework for spatial tree generation, mesh-based differentiable simulators, and computational work on mesh embeddings into curved spaces (the basis for the Bridges 2026 submission above). The variational and geometric structures here are the same ones that organize field theory, which is what keeps the two directions connected for me.
+Next to the field-theory work, I build energy-based models of geometric graphs and differentiable physics. Graphs embedded in 3D space, like neuronal morphologies or botanical trees, are neither purely geometric nor purely combinatorial, and modeling them means coupling discrete topology to continuous geometry. So far that has meant a from-scratch graph ML framework for spatial tree generation, mesh-based differentiable simulators, and computational work on mesh embeddings into curved spaces (the basis for the Bridges 2026 submission above). The structures here are the same ones that organize field theory, which is what keeps the two directions connected for me.
 
 ## Research Philosophy
 
@@ -151,4 +151,4 @@ I am motivated by questions of the form:
 - When do interactions in curved space generate genuinely new operator structure?
 - How can geometric and variational principles be made computational?
 
-These questions unify my work across field theory, geometry, and simulation — and they shape the rigor I bring to applied R&D and machine-learning engineering.
+These questions run through everything I do, from field theory to simulation, and they shape how I approach applied R&D and machine-learning engineering.

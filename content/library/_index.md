@@ -1,7 +1,7 @@
 ---
 title: "Library"
 subtitle: "Private notes, lecture material, and reference snippets"
-description: "Library — Erik Löffelholz"
+description: "Library, Erik Löffelholz"
 label: "[ Restricted Archive ]"
 ---
 

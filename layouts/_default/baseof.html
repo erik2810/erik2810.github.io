@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0a0c">
-    <title>{{ if .IsHome }}Erik Löffelholz — Research Portfolio{{ else }}{{ .Title }} — Erik Löffelholz{{ end }}</title>
+    <title>{{ if .IsHome }}Erik Löffelholz · Research Portfolio{{ else }}{{ .Title }} · Erik Löffelholz{{ end }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}">

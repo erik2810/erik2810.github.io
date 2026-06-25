@@ -1,6 +1,6 @@
 ---
 title: "Blog"
 subtitle: "Notes on geometry, graphs, and differentiable systems"
-description: "Blog — Erik Löffelholz"
+description: "Blog, Erik Löffelholz"
 label: "[ Field Notes ]"
 ---
