@@ -10,6 +10,8 @@
 #                  problem/solution are absent (e.g. hidden entries)
 
 sections:
+  - id: sciml
+    name: Scientific Machine Learning & Differentiable Systems
   - id: graph-ml
     name: Graph Machine Learning & Generative Modeling
   - id: simulation
@@ -20,6 +22,64 @@ sections:
     name: Applied Machine Learning
 
 projects:
+  - id: jax-spring-sim
+    section: sciml
+    title: JAX-Accelerated Differentiable Simulation Engine
+    featured: true
+    problem: >-
+      Physics simulators are usually hand-derived forces run in a Python time loop, which is slow and
+      awkward to differentiate.
+    solution: >-
+      This engine defines one potential energy and gets the forces by JAX autodiff, then JIT-compiles
+      the whole rollout into a single XLA kernel that stays differentiable end to end, so inverse
+      problems reduce to gradient descent through the simulator.
+    tech: [JAX, XLA, Differentiable Simulation, Python]
+    source: https://github.com/erik2810/jax-spring-sim
+    demo: https://erik2810.github.io/jax-spring-sim/
+
+  - id: webgpu-spring-mesh
+    section: sciml
+    title: Real-time Mesh Dynamics WebGPU Visualizer
+    featured: true
+    problem: >-
+      Interactive cloth and mesh simulation in the browser has to solve thousands of constraints per
+      frame at 60 fps without going unstable.
+    solution: >-
+      This runs the entire particle mesh on the GPU with WebGPU compute shaders written in Three.js
+      TSL, using small-step Position-Based Dynamics so it stays stable and you can grab and drag any
+      node, with a CPU WebGL2 fallback where WebGPU is missing.
+    tech: [WebGPU, Three.js TSL, TypeScript, Vite, WebGL2]
+    source: https://github.com/erik2810/webgpu-spring-mesh
+    demo: https://erik2810.github.io/webgpu-spring-mesh/
+
+  - id: neural-implicit-fields
+    section: sciml
+    title: Neural Implicit Fields (SDF & NeRF Renderer)
+    featured: true
+    problem: >-
+      Meshes tie 3D geometry to a fixed resolution, and classical renderers break the gradient chain,
+      so a shape cannot be learned directly from images.
+    solution: >-
+      A coordinate MLP stores the shape as a continuous function and is rendered differentiably,
+      either as a neural signed distance field by sphere tracing or as a NeRF-style radiance field by
+      volume integration, so an image or silhouette loss backpropagates into the network weights.
+    tech: [PyTorch, Neural SDFs, NeRF, Differentiable Rendering]
+    source: https://github.com/erik2810/neural-implicit-fields
+    demo: https://erik2810.github.io/neural-implicit-fields/
+
+  - id: differentiable-digital-twin
+    section: sciml
+    title: Differentiable Digital Twin (Inverse Problem Solver)
+    featured: true
+    problem: >-
+      Designing a load-bearing structure means searching a huge space of material layouts for the
+      stiffest one under a fixed budget.
+    solution: >-
+      This backpropagates through a finite-element solver in PyTorch, so one backward pass optimizes
+      the whole material field with Adam, and the resulting design and its optimization trajectory
+      replay in the browser on a WebGPU player.
+    tech: [PyTorch, Autodiff, WebGPU, Three.js, Docker, "CI/CD"]
+
   - id: graph-ml-lab
     section: graph-ml
     title: "Graph ML Lab: 3D Spatial Graph Generation"
