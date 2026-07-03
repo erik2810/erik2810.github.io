@@ -32,7 +32,11 @@ projects:
     solution: >-
       This engine defines one potential energy and gets the forces by JAX autodiff, then JIT-compiles
       the whole rollout into a single XLA kernel that stays differentiable end to end, so inverse
-      problems reduce to gradient descent through the simulator.
+      problems reduce to gradient descent through the simulator. Measured: the compiled rollout runs
+      48x faster per step than the eager loop at 1k nodes, and reverse-mode gradients cost a flat
+      2.4x the forward pass
+      (<a href="https://github.com/erik2810/jax-spring-sim/blob/main/BENCHMARKS.md" target="_blank"
+      rel="noopener">benchmarks</a>).
     tech: [JAX, XLA, Differentiable Simulation, Python]
     source: https://github.com/erik2810/jax-spring-sim
     demo: https://erik2810.github.io/jax-spring-sim/
