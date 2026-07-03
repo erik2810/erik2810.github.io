@@ -1,0 +1,180 @@
+{{ define "main" }}
+<div class="page-content canvas-page">
+    <div class="container-wide">
+        <header class="page-header">
+            <p class="page-label">[ Live System ]</p>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.subtitle }}<p class="page-subtitle">{{ . }}</p>{{ end }}
+        </header>
+
+        <p class="canvas-intro">
+            This is the <a href="/projects/#sciml">WebGPU Spring Mesh</a> solver embedded live: a
+            cloth lattice integrated entirely on the GPU with compute shaders, at 60 fps. Drag any
+            node to disturb it, orbit with the mouse, and tune the solver in its panel. The readout
+            in the corner is measured from the running engine, not mocked. Browsers without WebGPU
+            get the same physics on a CPU solver through WebGL2.
+        </p>
+
+        <div class="canvas-frame">
+            <iframe id="sim-frame" src="/webgpu-spring-mesh/" title="Interactive WebGPU cloth simulation"
+                    allow="fullscreen" loading="eager"></iframe>
+
+            <aside class="readout" id="readout" aria-live="off">
+                <p class="readout-title">/// System Readout</p>
+                <dl class="readout-grid">
+                    <div><dt>Frame time</dt><dd id="ro-ft">&mdash;</dd></div>
+                    <div><dt>FPS</dt><dd id="ro-fps">&mdash;</dd></div>
+                    <div><dt>Active nodes</dt><dd id="ro-nodes">&mdash;</dd></div>
+                    <div><dt>Spring constraints</dt><dd id="ro-springs">&mdash;</dd></div>
+                    <div><dt>Solver sweeps</dt><dd id="ro-sweeps">&mdash;</dd></div>
+                    <div><dt>Backend</dt><dd id="ro-solver">&mdash;</dd></div>
+                </dl>
+                <p class="readout-status"><span class="status-dot" id="ro-dot"></span><span id="ro-status">Connecting&hellip;</span></p>
+            </aside>
+        </div>
+
+        <div class="canvas-actions">
+            <a class="btn-secondary" href="/webgpu-spring-mesh/" target="_blank" rel="noopener">Full screen</a>
+            <a class="btn-secondary" href="https://github.com/erik2810/webgpu-spring-mesh" target="_blank" rel="noopener">Source code</a>
+        </div>
+
+        <details class="canvas-stack">
+            <summary>Technical Stack</summary>
+            <div class="canvas-stack-body">
+                <p>
+                    Each frame splits into substeps, and each substep runs three GPU compute passes:
+                    <em>predict</em> (gravity plus velocity, damped), <em>solve</em> (the Jacobi
+                    distance-constraint sweep below, run twice per substep, ping-ponged between two
+                    position buffers), and <em>finalize</em> (velocity from the position delta). The
+                    kernel is authored in Three.js TSL and compiles to a WGSL compute shader. This is
+                    the actual solve kernel from
+                    <a href="https://github.com/erik2810/webgpu-spring-mesh" target="_blank" rel="noopener">the repository</a>:
+                </p>
+<pre><code>// solve: one Jacobi sweep of distance constraints (TSL &rarr; WGSL compute)
+const makeSolve = (readAttr: Attr, writeAttr: Attr): Compute =>
+  Fn(() => {
+    const read  = storage(readAttr,  'vec4', count);
+    const write = storage(writeAttr, 'vec4', count);
+    const fixedNode = storage(this.fixedAttr, 'float', count);
+
+    const idx  = int(instanceIndex);
+    const yy   = idx.div(int(cols));
+    const xx   = idx.sub(yy.mul(int(cols)));
+    const self = read.element(instanceIndex).toVar();
+
+    If(lockedAt(idx, fixedNode), () => {
+      write.element(instanceIndex).assign(self);
+    }).Else(() => {
+      const p    = self.xyz.toVar();
+      const corr = vec3(0, 0, 0).toVar();
+      const cnt  = float(0).toVar();
+
+      for (const o of NEIGHBOURS) {          // structural + shear + bend
+        const nx = xx.add(int(o.dx));
+        const ny = yy.add(int(o.dy));
+        const inBounds = nx.greaterThanEqual(int(0)).and(nx.lessThan(int(cols)))
+          .and(ny.greaterThanEqual(int(0))).and(ny.lessThan(int(rows)));
+        If(inBounds, () => {
+          const np   = read.element(ny.mul(int(cols)).add(nx)).xyz;
+          const d    = np.sub(p);
+          const len  = d.length().max(1e-4);
+          const rest = float(o.rest * spacing);
+          // Move toward the neighbour proportional to the rest-length error.
+          corr.addAssign(d.div(len).mul(len.sub(rest)));
+          cnt.addAssign(1);
+        });
+      }
+
+      const moved = p.add(corr.div(cnt.max(1)).mul(U.stiffness));
+      write.element(instanceIndex).assign(vec4(clampFloor(moved), self.w));
+    });
+  })().compute(count);</code></pre>
+            </div>
+        </details>
+    </div>
+</div>
+
+<script>
+(function () {
+    var frame = document.getElementById('sim-frame');
+    var el = function (id) { return document.getElementById(id); };
+    var ro = {
+        ft: el('ro-ft'), fps: el('ro-fps'), nodes: el('ro-nodes'),
+        springs: el('ro-springs'), sweeps: el('ro-sweeps'), solver: el('ro-solver'),
+        dot: el('ro-dot'), status: el('ro-status')
+    };
+    var emaMs = null;
+    var poller = null;
+
+    function setStatus(text, live) {
+        ro.status.textContent = text;
+        ro.dot.classList.toggle('is-off', !live);
+    }
+
+    function offline(msg) {
+        if (poller) { clearInterval(poller); poller = null; }
+        setStatus(msg || 'Signal lost', false);
+    }
+
+    // Frame time: measure the iframe's own rAF cadence (same-origin).
+    function attachProbe(w) {
+        var last = null;
+        function tick(now) {
+            if (last !== null) {
+                var dt = now - last;
+                emaMs = emaMs === null ? dt : emaMs * 0.9 + dt * 0.1;
+            }
+            last = now;
+            w.requestAnimationFrame(tick);
+        }
+        w.requestAnimationFrame(tick);
+    }
+
+    // The sim panel renders .stat cells (label + value); read them directly.
+    function readPanel(doc) {
+        var out = {};
+        doc.querySelectorAll('.stat').forEach(function (cell) {
+            var k = cell.querySelector('.stat__k');
+            var v = cell.querySelector('.stat__v');
+            if (k && v) out[k.textContent.trim().toLowerCase()] = v.textContent.trim();
+        });
+        return out;
+    }
+
+    function readSubsteps(doc) {
+        var pressed = doc.querySelector('[aria-pressed="true"], .is-active[data-value]');
+        var n = pressed ? parseInt(pressed.textContent, 10) : NaN;
+        return isNaN(n) ? null : n;
+    }
+
+    frame.addEventListener('load', function () {
+        var w;
+        try {
+            w = frame.contentWindow;
+            void w.document.title; // throws if cross-origin (local dev)
+        } catch (e) {
+            offline('Offline in local preview');
+            return;
+        }
+        attachProbe(w);
+        setStatus('Live', true);
+        poller = setInterval(function () {
+            try {
+                var s = readPanel(w.document);
+                if (emaMs !== null) {
+                    ro.ft.textContent = emaMs.toFixed(1) + ' ms';
+                    ro.fps.textContent = Math.round(1000 / emaMs);
+                }
+                if (s.nodes) ro.nodes.textContent = s.nodes;
+                if (s.springs) ro.springs.textContent = s.springs;
+                if (s.solver) ro.solver.textContent = s.solver;
+                var sub = readSubsteps(w.document);
+                if (sub) ro.sweeps.textContent = sub + ' × 2 Jacobi';
+            } catch (e) {
+                offline();
+            }
+        }, 500);
+    });
+})();
+</script>
+{{ end }}

@@ -1389,6 +1389,184 @@ td {
 }
 
 /* --------------------------------------------------------------------------
+   Canvas page — embedded live simulation
+   -------------------------------------------------------------------------- */
+
+.canvas-intro {
+    max-width: 760px;
+    color: var(--fg-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+}
+
+.canvas-frame {
+    position: relative;
+    border: 1px solid var(--line);
+    background: #05070d;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.canvas-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* System readout overlay */
+.readout {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 220px;
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--line-strong);
+    padding: 0.9rem 1rem;
+    pointer-events: none;
+}
+
+.readout-title {
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--red);
+    margin-bottom: 0.7rem;
+}
+
+.readout-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
+}
+
+.readout-grid > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.readout-grid dt {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-mute);
+}
+
+.readout-grid dd {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.readout-status {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-dim);
+    margin: 0;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--line);
+}
+
+.readout-status .status-dot {
+    margin-right: 0.5em;
+}
+
+.status-dot.is-off {
+    background: var(--fg-mute);
+    box-shadow: none;
+}
+
+.canvas-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Technical stack toggle */
+.canvas-stack {
+    border: 1px solid var(--line);
+    background: var(--bg-panel);
+    padding: 1.2rem 1.4rem;
+    margin-top: 2rem;
+}
+
+.canvas-stack summary {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fg-mute);
+    cursor: pointer;
+    list-style: none;
+}
+
+.canvas-stack summary::before {
+    content: '[+] ';
+    color: var(--red);
+}
+
+.canvas-stack[open] summary::before {
+    content: '[-] ';
+}
+
+.canvas-stack summary::-webkit-details-marker {
+    display: none;
+}
+
+.canvas-stack-body {
+    margin-top: 1rem;
+}
+
+.canvas-stack-body p {
+    font-size: 0.88rem;
+    color: var(--fg-dim);
+    line-height: 1.65;
+    max-width: 760px;
+}
+
+.canvas-stack-body pre {
+    margin-bottom: 0;
+    max-height: 480px;
+    overflow: auto;
+}
+
+@media (max-width: 900px) {
+    .canvas-frame {
+        aspect-ratio: 4 / 5;
+        max-height: 75vh;
+    }
+
+    .readout {
+        top: 0.6rem;
+        right: 0.6rem;
+        width: 180px;
+        padding: 0.7rem 0.8rem;
+    }
+
+    .readout-grid dd {
+        font-size: 0.68rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
    Research page — trajectory timeline
    -------------------------------------------------------------------------- */
 

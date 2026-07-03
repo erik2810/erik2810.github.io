@@ -50,7 +50,7 @@ projects:
       node, with a CPU WebGL2 fallback where WebGPU is missing.
     tech: [WebGPU, Three.js TSL, TypeScript, Vite, WebGL2]
     source: https://github.com/erik2810/webgpu-spring-mesh
-    demo: https://erik2810.github.io/webgpu-spring-mesh/
+    demo: /canvas/
 
   - id: neural-implicit-fields
     section: sciml
