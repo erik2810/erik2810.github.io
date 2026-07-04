@@ -83,6 +83,8 @@ projects:
       the whole material field with Adam, and the resulting design and its optimization trajectory
       replay in the browser on a WebGPU player.
     tech: [PyTorch, Autodiff, WebGPU, Three.js, Docker, "CI/CD"]
+    source: https://github.com/erik2810/differentiable-digital-twin
+    demo: https://erik2810.github.io/differentiable-digital-twin/
 
   - id: graph-ml-lab
     section: graph-ml
