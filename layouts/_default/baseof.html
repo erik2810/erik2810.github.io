@@ -6,6 +6,18 @@
     <meta name="theme-color" content="#0a0a0c">
     <title>{{ if .IsHome }}Erik Löffelholz · Research Portfolio{{ else }}{{ .Title }} · Erik Löffelholz{{ end }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:site_name" content="Erik Löffelholz">
+    <meta property="og:title" content="{{ if .IsHome }}Erik Löffelholz · Research Portfolio{{ else }}{{ .Title }}{{ end }}">
+    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ "og-image.png" | absURL }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ if .IsHome }}Erik Löffelholz · Research Portfolio{{ else }}{{ .Title }}{{ end }}">
+    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="twitter:image" content="{{ "og-image.png" | absURL }}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
