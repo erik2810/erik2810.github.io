@@ -27,6 +27,7 @@ jobs:
           args: >-
             --no-progress
             --root-dir ${{ github.workspace }}/public
+            --remap 'file://.*/public/webgpu-spring-mesh.* https://erik2810.github.io/webgpu-spring-mesh/'
             --accept 200..=204,429
             --exclude linkedin\.com
             --exclude fonts\.gstatic\.com
