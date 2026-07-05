@@ -18,11 +18,41 @@
     <meta name="twitter:title" content="{{ if .IsHome }}Erik Löffelholz · Research Portfolio{{ else }}{{ .Title }}{{ end }}">
     <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="twitter:image" content="{{ "og-image.png" | absURL }}">
+    {{ if .IsHome }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Erik Löffelholz",
+      "url": {{ .Permalink | jsonify }},
+      "jobTitle": "Machine Learning Engineer",
+      "description": {{ .Site.Params.description | jsonify }},
+      "address": { "@type": "PostalAddress", "addressLocality": "Leipzig", "addressCountry": "DE" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Leipzig University" },
+      "knowsAbout": ["Mathematical Physics", "Quantum Field Theory", "Differentiable Simulation", "Geometric Machine Learning", "Scientific Machine Learning"],
+      "sameAs": [
+        "https://github.com/erik2810",
+        "https://www.linkedin.com/in/eriklfholz/"
+      ]
+    }
+    </script>
+    {{ else if and .IsPage (eq .Section "blog") }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ .Title | jsonify }},
+      "description": {{ or .Description .Summary | plainify | jsonify }},
+      "datePublished": {{ .Date.Format "2006-01-02" | jsonify }},
+      "url": {{ .Permalink | jsonify }},
+      "image": {{ "og-image.png" | absURL | jsonify }},
+      "author": { "@type": "Person", "name": "Erik Löffelholz", "url": {{ .Site.BaseURL | jsonify }} }
+    }
+    </script>
+    {{ end }}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/fonts.css">
     {{ partial "extend_head.html" . }}
     {{ block "head" . }}{{ end }}
 </head>
