@@ -26,6 +26,7 @@ jobs:
         with:
           args: >-
             --no-progress
+            --root-dir ${{ github.workspace }}/public
             --accept 200..=204,429
             --exclude linkedin\.com
             --exclude fonts\.gstatic\.com
