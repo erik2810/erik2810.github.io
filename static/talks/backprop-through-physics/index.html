@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backpropagating through a physics solver · Erik Löffelholz</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --r-background-color: #0a0a0c;
+      --r-main-font: 'Inter', sans-serif;
+      --r-main-font-size: 34px;
+      --r-main-color: #e8e8e4;
+      --r-heading-font: 'Inter', sans-serif;
+      --r-heading-color: #e8e8e4;
+      --r-heading-text-transform: none;
+      --r-heading1-size: 2.2em;
+      --r-heading2-size: 1.4em;
+      --r-link-color: #ff2a2a;
+      --r-link-color-hover: #ff6b6b;
+      --r-code-font: 'JetBrains Mono', monospace;
+    }
+    .reveal h1, .reveal h2 { font-weight: 900; letter-spacing: -0.02em; }
+    .reveal .mono-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.5em; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #6a6a63; display: block; margin-bottom: 1.2em;
+    }
+    .reveal .mono-label b { color: #ff2a2a; font-weight: 600; }
+    .reveal table { font-size: 0.62em; margin: 0 auto; }
+    .reveal table th { font-family: 'JetBrains Mono', monospace; font-size: 0.8em;
+      text-transform: uppercase; letter-spacing: 0.06em; color: #6a6a63; }
+    .reveal table td, .reveal table th { border-bottom: 1px solid #222228; padding: 0.4em 0.8em; }
+    .reveal .hl { color: #ff2a2a; font-weight: 600; }
+    .reveal .dim { color: #a3a39c; }
+    .reveal .small { font-size: 0.65em; }
+    .reveal pre { box-shadow: none; border: 1px solid #222228; width: 100%; }
+    .reveal pre code { background: #060608; padding: 0.9em 1em; font-size: 0.62em; line-height: 1.5; }
+    .reveal img.demo { border: 1px solid #222228; max-height: 480px; }
+    .reveal .foot { font-family: 'JetBrains Mono', monospace; font-size: 0.45em;
+      color: #6a6a63; letter-spacing: 0.08em; }
+  </style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+  <span class="mono-label"><b>///</b> Leipzig · erik2810.github.io</span>
+  <h1>Backpropagating through a physics solver</h1>
+  <p class="dim">Inverse structural design as gradient descent, in PyTorch</p>
+  <p class="foot">Erik Löffelholz · M.Sc. Mathematical Physics</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>01</b> The problem</span>
+  <h2>Engineering optimisation treats the simulator as a black box</h2>
+  <p class="dim">Pick a design, simulate, score, adjust, repeat.</p>
+  <p>To learn how $N$ parameters affect the objective, every black-box method
+     re-simulates on the order of <span class="hl">$N$ times per step</span>:
+     finite differences, CMA-ES, random search.</p>
+  <p class="dim small">Structural design spaces have $N$ in the tens of thousands to millions.
+     That is how one campaign becomes weeks of cluster time.</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>02</b> The contract change</span>
+  <h2>A differentiable simulator returns all $N$ sensitivities in one backward pass</h2>
+  <p>$$\nabla_\rho C = \text{one backward pass} \qquad \text{vs.} \qquad N{+}1 \text{ re-simulations}$$</p>
+  <p class="dim">Reverse-mode automatic differentiation is the adjoint method, rediscovered.
+     Its cost does not depend on $N$.</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>03</b> The model</span>
+  <h2>The canonical topology optimisation problem</h2>
+  <p class="small">A clamped elastic truss under a tip load. Per-node density $\rho \in (0,1)$
+     maps to stiffness by SIMP: $k(\rho) = k_{\min} + (k_{\max} - k_{\min})\rho^3$.</p>
+  <p>$$K(\rho)\,u = f, \qquad C = f \cdot u$$</p>
+  <p class="dim small">Minimise compliance $C$ at a fixed material budget.
+     This is how production structural optimisation is actually posed.</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>04</b> The one design decision</span>
+  <h2>Solve through <code>torch.linalg.solve</code></h2>
+  <p class="small">PyTorch knows how to differentiate the linear solve. The adjoint sensitivity
+     that people derive by hand,</p>
+  <p>$$\partial C / \partial \rho_e = -u_e^{\top} (\partial K_e / \partial \rho_e)\, u_e,$$</p>
+  <p class="small dim">is exactly what autograd computes. Nobody ever writes it down,
+     and new objectives need no re-derivation.</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>05</b> In nine lines</span>
+  <pre><code>import torch
+from ddtwin.geometry import Sheet
+from ddtwin.physics import solve_static
+
+sheet = Sheet.cantilever(rows=6, cols=10)
+density = torch.full((sheet.num_nodes,), 0.4, requires_grad=True)
+result = solve_static(sheet, density)
+result.compliance.backward()   # d(compliance)/d(density), one pass
+print(result.compliance.item(), density.grad.shape)   # scalar, (60,)</code></pre>
+  <p class="foot">github.com/erik2810/differentiable-digital-twin</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>06</b> The result</span>
+  <img class="demo" src="https://raw.githubusercontent.com/erik2810/differentiable-digital-twin/main/assets/demo.gif" alt="Optimised structure replaying in the WebGPU player">
+  <p class="foot">live: erik2810.github.io/differentiable-digital-twin · 4.6x stiffer than uniform at the same budget, ~2 s on a laptop CPU</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>07</b> Measured, N = 60</span>
+  <table>
+    <thead><tr><th>Method</th><th>Final loss</th><th>Static solves</th><th>Wall time</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">autodiff (Adam)</td><td>0.354</td><td class="hl">120</td><td>1.12 s</td></tr>
+      <tr><td>finite-diff GD</td><td>0.387</td><td>2,441</td><td>1.21 s</td></tr>
+      <tr><td>CMA-ES</td><td>0.275</td><td>2,448</td><td>1.32 s</td></tr>
+      <tr><td>random search</td><td>0.620</td><td>2,441</td><td>1.13 s</td></tr>
+    </tbody>
+  </table>
+  <p class="foot">every method sees the solver only as an oracle; reproduce with <code>ddtwin benchmark</code></p>
+</section>
+
+<section>
+  <span class="mono-label"><b>08</b> Measured, N = 150</span>
+  <table>
+    <thead><tr><th>Method</th><th>Final loss</th><th>Static solves</th><th>Wall time</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">autodiff (Adam)</td><td>0.237</td><td class="hl">120</td><td>0.93 s</td></tr>
+      <tr><td>finite-diff GD</td><td>0.273</td><td>6,041</td><td>5.67 s</td></tr>
+      <tr><td>CMA-ES</td><td>0.204</td><td>6,042</td><td>6.30 s</td></tr>
+      <tr><td>random search</td><td>0.533</td><td>6,041</td><td>5.56 s</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Autodiff stays at <span class="hl">120 solves</span> at both sizes.
+     Black-box methods track $\text{steps} \times (N{+}1)$ exactly.</p>
+  <p class="dim small">Extrapolate to $10^5$ elements: one finite-difference gradient costs
+     a hundred thousand solves. The autodiff gradient still costs about one.</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>09</b> Honest caveats</span>
+  <h2>What the numbers do not say</h2>
+  <p class="small">CMA-ES finds a slightly lower loss at these toy sizes.
+     Evolution strategies are good at small, cheap problems. The solve economics
+     is what kills them at scale, not their search quality.</p>
+  <p class="small dim">And this is a truss FEM, not a continuum shell. The physics is
+     deliberately the simplest thing that makes the cost structure measurable.</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>10</b> Where this goes</span>
+  <h2>The same contract, everywhere</h2>
+  <p class="small">Any simulator you can differentiate becomes an optimiser:
+     topology optimisation, system identification, digital twins that fit
+     themselves to sensor data.</p>
+  <p class="small dim">The compilation side of the argument (jit, vmap) lives in a companion
+     JAX engine with its own measured benchmarks.</p>
+</section>
+
+<section>
+  <span class="mono-label"><b>///</b> Thanks</span>
+  <h2>Erik Löffelholz</h2>
+  <p class="foot">
+    erik2810.github.io<br>
+    github.com/erik2810/differentiable-digital-twin<br>
+    case study: erik2810.github.io/blog/differentiable-digital-twin-case-study<br>
+    eriklfholz@googlemail.com
+  </p>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/math/math.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'none',
+    slideNumber: 'c/t',
+    plugins: [ RevealMath.KaTeX ],
+  });
+</script>
+</body>
+</html>
