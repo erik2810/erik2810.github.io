@@ -27,7 +27,6 @@ jobs:
           args: >-
             --no-progress
             --accept 200..=204,429
-            --exclude-mail
             --exclude linkedin\.com
             --exclude fonts\.gstatic\.com
             './public/**/*.html'
