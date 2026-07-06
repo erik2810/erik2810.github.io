@@ -14,7 +14,7 @@ author = 'Erik Löffelholz'
   ShowCodeCopyButtons = true
   ShowBreadCrumbs = false
   math = true
-  # goatcounter = 'your-code'  # set to enable privacy-friendly analytics (yourcode.goatcounter.com)
+  goatcounter = 'erik2810'
 
 [taxonomies]
   category = 'categories'

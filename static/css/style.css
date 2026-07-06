@@ -972,7 +972,7 @@ td {
     margin-top: 0;
 }
 
-/* Post metadata (blog / library single pages) */
+/* Post metadata (blog single pages) */
 .post-meta {
     display: flex;
     align-items: center;
@@ -1958,7 +1958,7 @@ td {
 }
 
 /* --------------------------------------------------------------------------
-   Blog / library list
+   Blog list
    -------------------------------------------------------------------------- */
 
 .post-list {

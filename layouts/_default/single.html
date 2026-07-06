@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $isPost := or (eq .Section "blog") (eq .Section "library") }}
+{{ $isPost := eq .Section "blog" }}
 {{ if $isPost }}<div class="progress-bar" id="progress-bar"></div>{{ end }}
 <article class="page-content">
     <div class="container">

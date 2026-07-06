@@ -36,23 +36,6 @@ jobs:
       - name: Build with Hugo
         run: hugo --minify
 
-      - name: Setup Node.js (for StatiCrypt)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Encrypt Private Library
-        env:
-          PASSWORD: ${{ secrets.LIBRARY_PASSWORD }}
-        run: |
-          find public/library -name "*.html" | while read -r file; do
-              dir=$(dirname "$file")
-              npx staticrypt "$file" -d "$dir" -p "$PASSWORD"
-          done
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
