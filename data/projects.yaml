@@ -209,6 +209,30 @@ projects:
     source: https://github.com/erik2810/DiffQFT
     demo: https://erik2810.github.io/DiffQFT/
 
+  - id: ogs-trame-viewer
+    section: scientific-computing
+    title: OpenGeoSys 3D Web Viewer
+    featured: true
+    problem: >-
+      OpenGeoSys and other simulators write their results as VTK files, and looking at those results
+      normally means installing a desktop viewer like ParaView on every machine that needs to see
+      them. That does not travel well when you want to hand a colleague a link.
+    solution: >-
+      A web app that reads the same VTU and PVD files in the browser. PyVista renders the mesh
+      off-screen and Trame streams it to a page with a time slider, a selector to colour by any point
+      or cell field, and a geopandas overlay that draws site features (a domain boundary, monitoring
+      wells, fracture traces) over the mesh. It reads real OpenGeoSys output, vector and tensor fields
+      included, and ships a 97-step heat-transport sample. The live demo is one frame exported to
+      interactive vtk.js.
+    highlights:
+      - Reads real OpenGeoSys VTU/PVD output, point and cell fields, vectors and tensors
+      - Server-side VTK rendering streamed to the browser with Trame, no desktop install
+      - geopandas GIS overlay of a domain boundary, monitoring wells, and fracture traces
+      - Unit-tested loader and GIS layers, with a headless render check in CI on Python 3.10 to 3.12
+    tech: [Python, PyVista, Trame, VTK, geopandas, OpenGeoSys]
+    source: https://github.com/erik2810/ogs-trame-viewer
+    demo: https://erik2810.github.io/ogs-trame-viewer/
+
   - id: neural-ode-lorenz
     section: scientific-computing
     title: "Neural ODE: Learning Chaotic Dynamics"
