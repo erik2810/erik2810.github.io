@@ -18,6 +18,13 @@ I also keep a second, active interest in geometric and differentiable machine le
 ## Featured Work
 
 <div class="publication">
+    <p class="pub-status">Published &middot; Proceedings of Bridges 2026: Mathematics and the Arts, pages 197 to 204</p>
+    <p class="pub-authors">Fabian Lander, <strong>Erik Löffelholz</strong>, Diaaeldin Taha, Steve Trettel, Anna Wienhard</p>
+    <p class="pub-title">Illustrating Hyperbolic Surfaces with Mesh Embeddings</p>
+    <p class="pub-venue">Regular Papers track. We discretize hyperbolic surfaces into meshes and embed them in Euclidean space by minimizing a distortion energy, so that the edge lengths of the embedding match those in the hyperbolic plane. The surfaces buckle and ruffle to take up the extra area, which makes the fast area growth visible where flat models such as the Poincaré disk hide it. The paper covers embedded disks, equidistant strips and diverging geodesics, and their use as renders and 3D prints in talks, teaching and public engagement. &middot; <a href="https://archive.bridgesmathart.org/2026/bridges2026-197.html" target="_blank" rel="noopener">Paper page</a> &middot; <a href="https://archive.bridgesmathart.org/2026/bridges2026-197.pdf" target="_blank" rel="noopener">PDF</a> &middot; <a href="https://archive.bridgesmathart.org/2026/bridges2026_Supplement_94.pdf" target="_blank" rel="noopener">Supplement</a></p>
+</div>
+
+<div class="publication">
     <p class="pub-status">Article, in preparation / to be submitted to JHEP</p>
     <p class="pub-authors"><strong>Erik Löffelholz</strong></p>
     <p class="pub-title">Interacting Vertex Operators in Euclidean AdS₂: Connected Correlators, Holographic Renormalization and Anomalous Dimensions</p>
@@ -29,13 +36,6 @@ I also keep a second, active interest in geometric and differentiable machine le
     <p class="pub-authors"><strong>Erik Löffelholz</strong> &middot; Supervisor: Prof. Dr. Stefan Hollands &middot; Second Examiner: Dr. Markus Fröb</p>
     <p class="pub-title">The Sine-Gordon Model in Hyperbolic Space and the AdS/CFT Correspondence</p>
     <p class="pub-venue">Faculty of Physics and Earth System Sciences. &middot; <a href="/assets/pdf/master-thesis-sine-gordon-ads-cft.pdf" target="_blank" rel="noopener">Read the thesis (PDF)</a></p>
-</div>
-
-<div class="publication">
-    <p class="pub-status">Under review, Bridges Conference 2026</p>
-    <p class="pub-authors">Fabian Lander, <strong>Erik Löffelholz</strong>, Diaaeldin Taha, Steve Trettel, Anna Wienhard</p>
-    <p class="pub-title">Illustrating Hyperbolic Surfaces with Mesh Embeddings</p>
-    <p class="pub-venue">Regular Papers Track. &middot; Submitted 2026</p>
 </div>
 
 ## Core Research Direction
@@ -88,8 +88,8 @@ The thesis noticed that the logarithmic terms and the apparent multiplets $\wide
         <div class="timeline-body">
             <h3>Max Planck Institute for Mathematics in the Sciences</h3>
             <p>Computational and geometric research: discrete differential geometry, mesh embeddings
-            into curved spaces, and differentiable simulation. This sharpened the numerical side that
-            sits next to the analytic field-theory work.</p>
+            into curved spaces, and differentiable simulation, published as the Bridges 2026 paper above.
+            This sharpened the numerical side that sits next to the analytic field-theory work.</p>
         </div>
     </div>
     <div class="timeline-entry timeline-next">
@@ -140,7 +140,7 @@ The thesis noticed that the logarithmic terms and the apparent multiplets $\wide
 
 <h2 id="geometric-ml">Secondary Direction: Geometric & Differentiable ML</h2>
 
-Next to the field-theory work, I build energy-based models of geometric graphs and differentiable physics. Graphs embedded in 3D space, like neuronal morphologies or botanical trees, are neither purely geometric nor purely combinatorial, and modeling them means coupling discrete topology to continuous geometry. So far that has meant a from-scratch graph ML framework for spatial tree generation, mesh-based differentiable simulators, and computational work on mesh embeddings into curved spaces (the basis for the Bridges 2026 submission above). The structures here are the same ones that organize field theory, which is what keeps the two directions connected for me.
+Next to the field-theory work, I build energy-based models of geometric graphs and differentiable physics. Graphs embedded in 3D space, like neuronal morphologies or botanical trees, are neither purely geometric nor purely combinatorial, and modeling them means coupling discrete topology to continuous geometry. So far that has meant a from-scratch graph ML framework for spatial tree generation, mesh-based differentiable simulators, and computational work on mesh embeddings into curved spaces (the computational basis for the Bridges 2026 paper above). The structures here are the same ones that organize field theory, which is what keeps the two directions connected for me.
 
 ## Research Philosophy
 

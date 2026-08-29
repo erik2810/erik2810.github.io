@@ -25,7 +25,7 @@
         .cv-head h1 { font-size: 18pt; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2mm; }
         .cv-head-contact { display: flex; flex-wrap: wrap; gap: 3mm 6mm; font-size: 8.5pt; color: #555; }
 
-        .cv-sec { margin-bottom: 5mm; }
+        .cv-sec { margin-bottom: 3.8mm; }
         .cv-sec h2 {
             font-size: 9pt;
             font-weight: 700;
@@ -38,7 +38,7 @@
         }
         .cv-sec p { margin-bottom: 2mm; }
 
-        .cv-ent { display: flex; gap: 4mm; margin-bottom: 3mm; }
+        .cv-ent { display: flex; gap: 4mm; margin-bottom: 2.4mm; }
         .cv-ent-date {
             width: 32mm;
             min-width: 32mm;
@@ -57,7 +57,7 @@
         .cv-sk h3 { font-size: 8.5pt; font-weight: 600; color: #333; margin-bottom: 0.5mm; }
         .cv-sk p { font-size: 9pt; color: #555; margin-bottom: 0; }
 
-        .cv-proj { margin-bottom: 1.5mm; }
+        .cv-proj { margin-bottom: 1.1mm; }
         .cv-proj strong { font-weight: 600; }
         .cv-proj a { font-size: 8.5pt; color: #1e3a5f; }
         .cv-note { font-size: 8pt; color: #888; }
@@ -168,7 +168,7 @@
                 <li>GPU-beschleunigte differenzierbare Simulations- und 3D-Visualisierungssoftware (PyTorch, Three.js, WebGL) für mathematische Forschung</li>
                 <li>Operator-Bibliothek für diskrete Differentialgeometrie und Pipelines zur Einbettung von Meshes in gekrümmte (hyperbolische und sphärische) Räume durch Energieminimierung</li>
                 <li>Binäres WebSocket-Protokoll, das Python- und PyTorch-Compute mit dem Browser verbindet, etwa 10- bis 20-mal schneller als JSON, mit CUDA-, MPS- und CPU-Backends</li>
-                <li>Co-Autor einer Forschungsarbeit über hyperbolische Flächen-Mesh-Einbettungen (Bridges Conference 2026, in Begutachtung)</li>
+                <li>Co-Autor einer Forschungsarbeit über hyperbolische Flächen-Mesh-Einbettungen, erschienen in den Proceedings of Bridges 2026, Seiten 197 bis 204</li>
             </ul>
         </div>
     </div>
@@ -228,7 +228,11 @@
         </div>
         <div>
             <h3>Backend &amp; Infrastruktur</h3>
-            <p>FastAPI · REST-APIs · Docker · Git · CI/CD · Agentische Coding-Tools</p>
+            <p>FastAPI · REST-APIs · SQL (SQLite, Schema-Migrationen) · Docker · Git · CI/CD · Agentische Coding-Tools</p>
+        </div>
+        <div>
+            <h3>Geometrie &amp; 3D</h3>
+            <p>Meshes &amp; Half-Edge-Strukturen · Diskrete Differentialgeometrie · Remeshing &amp; Mesh-Qualität · Geodäten · VTK/PyVista · Marching Cubes · Splines</p>
         </div>
         <div>
             <h3>Wissenschaftliches Rechnen</h3>
@@ -243,11 +247,13 @@
 
 <div class="cv-sec">
     <h2>Ausgewählte Projekte</h2>
+    <p class="cv-proj"><strong>OpenGeoSys 3D-Webviewer.</strong> Browseranwendung für OpenGeoSys- und VTK-Simulationsdaten mit Trame und PyVista: serverseitiges VTK-Rendering, Zeitschieber über VTU/PVD-Serien, Einfärbung nach beliebigen Feldern und eine geopandas-Ebene für Standortdaten. Getestete Daten- und GIS-Schicht, Render-Check in der CI. <a href="https://github.com/erik2810/ogs-trame-viewer">github.com/erik2810/ogs-trame-viewer</a></p>
     <p class="cv-proj"><strong>Mesh-Einbettungen &amp; DDG.</strong> GPU-Einbettung von Meshes in hyperbolische und sphärische Räume durch Feder-Masse-Energieminimierung, mit einer Operator-Bibliothek für diskrete Differentialgeometrie. Rechnerische Grundlage der Bridges-2026-Arbeit.</p>
     <p class="cv-proj"><strong>Graph ML Lab.</strong> Ein PyTorch-Framework zur räumlichen Graphgenerierung, von Grund auf gebaut: GCN, GAT, Graph-VAE und gemeinsame diskret-kontinuierliche Diffusion über 3D-Graphstrukturen. Keine externen GNN-Bibliotheken. <a href="https://github.com/erik2810/ml-projects">github.com/erik2810/ml-projects</a></p>
     <p class="cv-proj"><strong>Mesh-basierter Physik-Simulator.</strong> Eine vollständig differenzierbare Physik-Engine in PyTorch, die Mesh-Topologie auf Partikel-Feder-Systeme abbildet, mit energiebasierten Kräften und End-to-End-Backpropagation durch die Dynamik.</p>
     <p class="cv-proj"><strong>PINN-Löser.</strong> Ein Physics-Informed-Neural-Network-Löser für 10 PDEs (Burgers, Wärme, Welle, KdV und weitere) mit PyTorch-Training-Backend und clientseitiger JavaScript-Inferenz. <a href="https://github.com/erik2810/pde-solver">github.com/erik2810/pde-solver</a></p>
-    <p class="cv-proj"><strong>DiffQFT.</strong> Differenzierbare Quantenfeldtheorie in AdS₂, mit neuronalen Surrogaten als Ersatz für Monte-Carlo-Integration, einem PINN-Löser und einem FastAPI-Backend. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
+        <p class="cv-proj"><strong>Gitter-Quantenfeldtheorie.</strong> Monte-Carlo-Simulation einer SU(2)-Gittereichtheorie mit Langevin-Sampling, eichinvarianter Wilson-Wirkung und Observablen. Ergänzt um eine Transfermatrix-Rechnung für den anharmonischen Oszillator, die das Hamilton-Spektrum und die Massenlücke exakt liefert und damit als Referenz für die stochastischen Ergebnisse dient. Getestet gegen die analytisch bekannten Grenzfälle.</p>
+<p class="cv-proj"><strong>DiffQFT.</strong> Differenzierbare Quantenfeldtheorie in AdS₂, mit neuronalen Surrogaten als Ersatz für Monte-Carlo-Integration, einem PINN-Löser und einem FastAPI-Backend. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
     <p class="cv-proj"><strong>Knitted Models.</strong> Eine Computational-Geometry-Engine, die gewobene Strangmuster auf Quad-Meshes mit Halbkanten-Datenstrukturen und Spline-Interpolation erzeugt, gerendert in Three.js mit GPU-Path-Tracing.</p>
     <p class="cv-proj"><strong>Neural ODE Engine.</strong> Ein Netz, das chaotische Lorenz-Dynamik in Echtzeit lernt, mit Backpropagation, einem RK4-Integrator und einem von Hand in JavaScript geschriebenen Adam-Optimizer. <a href="https://github.com/erik2810/differentiable-physics-engine">github.com/erik2810/differentiable-physics-engine</a></p>
     <p class="cv-note">Vollständiges Portfolio mit Live-Demos unter <a href="https://erik2810.github.io/projects/">erik2810.github.io/projects</a></p>

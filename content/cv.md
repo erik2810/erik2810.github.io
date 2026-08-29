@@ -141,7 +141,7 @@ hide_title: true
         <p style="margin-top: 0;">
             Fabian Lander, <strong>Erik Löffelholz</strong>, Diaaeldin Taha, Steve Trettel, Anna Wienhard.<br>
             <em>"Illustrating Hyperbolic Surfaces with Mesh Embeddings."</em><br>
-            Submitted to the <strong>Bridges Conference 2026</strong> (Regular Papers Track). <em>Under Review</em>.
+            In <strong>Proceedings of Bridges 2026: Mathematics and the Arts</strong>, Regular Papers, pp. 197&ndash;204. <a href="https://archive.bridgesmathart.org/2026/bridges2026-197.html" target="_blank" rel="noopener">Paper</a>
         </p>
     </div>
 </section>

@@ -25,7 +25,7 @@
         .cv-head h1 { font-size: 18pt; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2mm; }
         .cv-head-contact { display: flex; flex-wrap: wrap; gap: 3mm 6mm; font-size: 8.5pt; color: #555; }
 
-        .cv-sec { margin-bottom: 5mm; }
+        .cv-sec { margin-bottom: 3.8mm; }
         .cv-sec h2 {
             font-size: 9pt;
             font-weight: 700;
@@ -38,7 +38,7 @@
         }
         .cv-sec p { margin-bottom: 2mm; }
 
-        .cv-ent { display: flex; gap: 4mm; margin-bottom: 3mm; }
+        .cv-ent { display: flex; gap: 4mm; margin-bottom: 2.4mm; }
         .cv-ent-date {
             width: 32mm;
             min-width: 32mm;
@@ -57,7 +57,7 @@
         .cv-sk h3 { font-size: 8.5pt; font-weight: 600; color: #333; margin-bottom: 0.5mm; }
         .cv-sk p { font-size: 9pt; color: #555; margin-bottom: 0; }
 
-        .cv-proj { margin-bottom: 1.5mm; }
+        .cv-proj { margin-bottom: 1.1mm; }
         .cv-proj strong { font-weight: 600; }
         .cv-proj a { font-size: 8.5pt; color: #1e3a5f; }
         .cv-note { font-size: 8pt; color: #888; }
@@ -167,7 +167,7 @@
                 <li>Built GPU-accelerated differentiable simulation and 3D visualization software (PyTorch, Three.js, WebGL) for mathematical research</li>
                 <li>Implemented a discrete differential geometry operator library and pipelines for embedding meshes into curved (hyperbolic and spherical) spaces by energy minimization</li>
                 <li>Designed a binary WebSocket protocol that connected Python and PyTorch compute to the browser, roughly 10 to 20 times faster than JSON, with CUDA, MPS and CPU backends</li>
-                <li>Co-authored a research paper on hyperbolic surface mesh embeddings (Bridges Conference 2026, under review)</li>
+                <li>Co-authored a research paper on hyperbolic surface mesh embeddings, published in the Proceedings of Bridges 2026, pages 197 to 204</li>
             </ul>
         </div>
     </div>
@@ -227,7 +227,15 @@
         </div>
         <div>
             <h3>Backend &amp; Infrastructure</h3>
-            <p>FastAPI · REST APIs · Docker · Git · CI/CD · Agentic Coding Tools</p>
+            <p>FastAPI · REST APIs · SQL (SQLite, schema migrations) · Docker · Git · CI/CD · Agentic Coding Tools</p>
+        </div>
+        <div>
+            <h3>Scientific Visualisation</h3>
+            <p>VTK · ParaView · PyVista · Trame · geopandas · VTU/PVD formats · OpenGeoSys</p>
+        </div>
+        <div>
+            <h3>Geometry &amp; 3D</h3>
+            <p>Meshes &amp; half-edge structures · Discrete differential geometry · Remeshing &amp; mesh quality · Geodesics · VTK/PyVista · Marching cubes · Splines</p>
         </div>
         <div>
             <h3>Scientific Computing</h3>
@@ -242,11 +250,13 @@
 
 <div class="cv-sec">
     <h2>Selected Projects</h2>
+    <p class="cv-proj"><strong>OpenGeoSys 3D Web Viewer.</strong> A browser application for OpenGeoSys and VTK simulation output, built with Trame and PyVista. Server-side VTK rendering streamed to the browser, a time slider over VTU/PVD series, colouring by any point or cell field, and a geopandas overlay of site features (boundaries, monitoring wells, fracture traces). Loader and GIS layers unit-tested, with a headless render check in CI across Python 3.10 to 3.12. <a href="https://github.com/erik2810/ogs-trame-viewer">github.com/erik2810/ogs-trame-viewer</a></p>
     <p class="cv-proj"><strong>Mesh Embeddings &amp; DDG.</strong> GPU mesh embedding into hyperbolic and spherical spaces by spring-mass energy minimization, with a discrete differential geometry operator library. Computational basis for the Bridges 2026 paper.</p>
     <p class="cv-proj"><strong>Graph ML Lab.</strong> A PyTorch framework for spatial graph generation, built from scratch: GCN, GAT, graph VAE, and joint discrete-continuous diffusion over 3D graph structures. No external GNN libraries. <a href="https://github.com/erik2810/ml-projects">github.com/erik2810/ml-projects</a></p>
     <p class="cv-proj"><strong>Mesh-Based Physics Simulator.</strong> A fully differentiable physics engine in PyTorch that maps mesh topology to particle-spring systems, with energy-based forces and end-to-end backpropagation through the dynamics.</p>
     <p class="cv-proj"><strong>PINN Solver.</strong> A Physics-Informed Neural Network solver for 10 PDEs (Burgers, Heat, Wave, KdV, and others) with a PyTorch training backend and client-side JavaScript inference. <a href="https://github.com/erik2810/pde-solver">github.com/erik2810/pde-solver</a></p>
-    <p class="cv-proj"><strong>DiffQFT.</strong> Differentiable quantum field theory in AdS₂, with neural surrogates that replace Monte Carlo integration, a PINN solver, and a FastAPI backend. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
+        <p class="cv-proj"><strong>Lattice Quantum Field Theory.</strong> Monte Carlo simulation of an SU(2) lattice gauge theory via Langevin dynamics, with a gauge-invariant Wilson action and observables. Paired with a transfer-matrix computation for the anharmonic oscillator whose eigenvalues give the Hamiltonian spectrum and mass gap exactly, serving as a reference for the stochastic results. Tested against the analytically known limits.</p>
+<p class="cv-proj"><strong>DiffQFT.</strong> Differentiable quantum field theory in AdS₂, with neural surrogates that replace Monte Carlo integration, a PINN solver, and a FastAPI backend. <a href="https://github.com/erik2810/DiffQFT">github.com/erik2810/DiffQFT</a></p>
     <p class="cv-proj"><strong>Knitted Models.</strong> A computational geometry engine that generates woven strand patterns on quad meshes using half-edge data structures and spline interpolation, rendered in Three.js with GPU path tracing.</p>
     <p class="cv-proj"><strong>Neural ODE Engine.</strong> A network that learns chaotic Lorenz dynamics in real time, with backpropagation, an RK4 integrator, and an Adam optimizer written by hand in JavaScript. <a href="https://github.com/erik2810/differentiable-physics-engine">github.com/erik2810/differentiable-physics-engine</a></p>
     <p class="cv-note">Full portfolio with live demos at <a href="https://erik2810.github.io/projects/">erik2810.github.io/projects</a></p>
